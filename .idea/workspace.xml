@@ -4,29 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="">
+    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="User">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Account.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Customer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/OnlinePayment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/OrderDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Orders.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/PayOnDelivery.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/ProductGrouping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Products.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/ShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/enums/OrderStatus.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/impl/Da.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/UserService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/tools/JdbcProvider.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +48,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "last_opened_file_path": "E:/java.new/OnlineShopSystem/src/main/java/mft/model/repository",
@@ -123,11 +111,24 @@
       <updated>1703751629937</updated>
       <workItem from="1703751632894" duration="2594000" />
       <workItem from="1703842461524" duration="10353000" />
-      <workItem from="1704009290006" duration="5327000" />
+      <workItem from="1704009290006" duration="5995000" />
     </task>
+    <task id="LOCAL-00001" summary="entity">
+      <option name="closed" value="true" />
+      <created>1704015190723</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1704015190723</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="entity" />
+    <option name="LAST_COMMIT_MESSAGE" value="entity" />
   </component>
 </project>
