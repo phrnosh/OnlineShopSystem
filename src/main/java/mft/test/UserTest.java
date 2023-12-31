@@ -1,7 +1,5 @@
 package mft.test;
 
-import mft.controller.UserController;
-
 public class UserTest {
     public static void main(String[] args) throws Exception {
 

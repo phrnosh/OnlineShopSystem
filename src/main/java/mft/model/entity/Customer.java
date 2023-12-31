@@ -13,7 +13,10 @@ public class Customer {
     private int id;
     private String name;
     private String family;
+    private String username;
+    private String password;
     private String address;
     private String phoneNumber;
     private String email;
+    private boolean status;
 }
