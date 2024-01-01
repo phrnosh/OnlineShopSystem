@@ -5,6 +5,7 @@ import lombok.experimental.SuperBuilder;
 import mft.model.entity.enums.OrderStatus;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Setter
@@ -20,6 +21,6 @@ public class Orders {
     private float amount;
     private float discount;
     private Payment payment;
-    private LocalDate orderDate;
+    private LocalDateTime orderDate;
     private OrderStatus status;
 }

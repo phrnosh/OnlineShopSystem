@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="DB-UserPart">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/controller/CustomerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/entity/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Customer.java" afterDir="false" />
+    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="CustomerPart">
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/entity/Products.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Products.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -110,7 +109,7 @@
       <workItem from="1703751632894" duration="2594000" />
       <workItem from="1703842461524" duration="10353000" />
       <workItem from="1704009290006" duration="5995000" />
-      <workItem from="1704015387767" duration="4961000" />
+      <workItem from="1704015387767" duration="14469000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -128,7 +127,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704015676878</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="CustomerPart">
+      <option name="closed" value="true" />
+      <created>1704032053215</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1704032053215</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="entity" />
     <MESSAGE value="DB-UserPart" />
-    <option name="LAST_COMMIT_MESSAGE" value="DB-UserPart" />
+    <MESSAGE value="CustomerPart" />
+    <option name="LAST_COMMIT_MESSAGE" value="CustomerPart" />
   </component>
 </project>

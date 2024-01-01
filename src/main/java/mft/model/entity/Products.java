@@ -13,8 +13,8 @@ public class Products {
     private int id;
     private String name;
     private String brand;
-    private ProductGrouping group;
-    private int size;
-    private int price;
+//    private ProductGrouping group;
+    private float size;
+    private float price;
     private String description;
 }
