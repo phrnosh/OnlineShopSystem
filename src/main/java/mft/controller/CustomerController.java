@@ -1,12 +1,15 @@
 package mft.controller;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Customer;
 import mft.model.service.CustomerService;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Log4j
 public class CustomerController {
+    //    private static Logger logger = Logger.getLogger(PersonService.class);
     private static CustomerController controller=new CustomerController();
 
     private CustomerController() {
@@ -37,6 +40,7 @@ public class CustomerController {
                             .status(status)
                             .build();
             CustomerService.getService().save(customer);
+            log.info("Save");
             return customer;
         }else {
             throw new Exception("Invalid Data");
@@ -64,6 +68,7 @@ public class CustomerController {
                             .status(status)
                             .build();
             CustomerService.getService().edit(customer);
+            log.info("Edit");
             return customer;
         }else {
             throw new Exception("Invalid Data");
@@ -73,22 +78,27 @@ public class CustomerController {
     public Customer remove(Integer id) throws Exception {
         Customer customer=CustomerService.getService().findById(id);
         CustomerService.getService().remove(id);
+        log.info("Remove");
         return customer;
     }
 
     public List<Customer> findAll() throws Exception {
+        log.info("FindAll");
         return CustomerService.getService().findAll();
     }
 
     public List<Customer> findByAll(String searchText) throws Exception {
+        log.info("FindByAll");
         return CustomerService.getService().findByAll(searchText);
     }
 
     public Customer findById(Integer id) throws Exception {
+        log.info("FindById");
         return CustomerService.getService().findById(id);
     }
 
     public Customer findByUsername(String username) throws Exception {
+        log.info("FindByUsername");
         return CustomerService.getService().findByUsername(username);
 
     }
@@ -96,6 +106,7 @@ public class CustomerController {
     public Customer findByUsernameAndPassword(String username, String password) throws Exception {
         Customer customer = CustomerService.getService().findByUsernameAndPassword(username, password);
         if (customer != null) {
+            log.info("FindByUsernameAndPassword");
             return customer;
         }
         throw new Exception("Invalid Username/Password");

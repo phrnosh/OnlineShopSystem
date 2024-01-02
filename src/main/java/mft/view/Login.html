@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="../../D/xampp/htdocs/bootstrap.css">
+    <link rel="stylesheet" href="../../D/xampp/htdocs/style.css">
+</head>
+<body>
+
+
+    <!-- top header -->
+    <div class="container top-header">
+        <p style=" top:150px" >
+        <div class="AppHeader-search-control search-box">
+            <div class="input-group md-form form-sm form-1 pl-0" style="padding-bottom:20px">
+                <form class=" form-control input-contrast d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- nav menu -->
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+<!--    <nav class="navbar navbar-expand-lg navbar-light" id="nav-menu" style="width: 100%;">-->
+<!--        <button style="margin-bottom: 10px;" class="navbar-toggler" type="button" data-toggle="collapse"-->
+<!--                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"-->
+<!--                aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent"-->
+<!--             style="background-color: #333; margin-left: -16px; margin-right: -22px;">-->
+<!--            <div class="container">-->
+<!--                <ul class="navbar-nav">-->
+<!--                    <li class="nav-item d-block d-lg-none">-->
+<!--                        <input type="search" width="100%" placeholder="دنبال چی میگردی؟" class="serchbox-mobile">-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active">-->
+<!--                        <a class="nav-link" href="#" style="color: #fff; margin-top: -2px;">برنامه نویسی<span-->
+<!--                                class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#" style="color: #fff">طراحی سایت</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active">-->
+<!--                        <a class="nav-link" href="#" style="color: #fff;">گرافیک<span-->
+<!--                                class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active">-->
+<!--                        <a class="nav-link" href="#" style="color: #fff;">انیمیشن<span-->
+<!--                                class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item active">-->
+<!--                        <a class="nav-link" href="#" style="color: #fff;">برنامه نویسی موبایل<span-->
+<!--                                class="sr-only">(current)</span></a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
+<!--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff">-->
+<!--                            بازی سازی-->
+<!--                        </a>-->
+<!--                        <div class="dropdown-menu dropdown-menu-right text-right" aria-labelledby="navbarDropdown">-->
+<!--                            <a class="dropmenu" href="#">یونیتی</a>-->
+<!--                            <a class="dropmenu" href="#">آنریل انجین</a>-->
+<!--                            <a class="dropmenu" href="#">java</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+    </nav>
+    <br><br>
+
+<div style="width: 60%; margin: auto; background-color: #f5f5f5; box-shadow: dimgrey 2px 2px 10px" class="p-5">
+    <p><img src="../../../../../image/login1.jpg" style="position: absolute;right: 300px;width: 300px;" class=" d-none d-lg-block"></p>
+    <h1>Log in</h1>
+    <p>وارد حساب کاربری خود شوید</p>
+
+    <form action="" class="p-5">
+        <input class="form-control mt-2" style="display: block; width: 300px" type="text" placeholder="Username">
+        <input class="form-control mt-2" style="display: block; width: 300px" type="password" placeholder="Password">
+        <input class="text-center btn btn-primary mt-5" type="submit" value="ورود به سایت">
+    </form>
+
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+    <footer>
+        <div class="footer-back">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-4"><br>
+                        <h6>درباره راکت</h6>
+                        <hr class="header-caption-footer">
+                        <p class="caption-footer">راکت یکی از پرتلاش‌ترین و بروزترین وبسایت های آموزشی در سطح ایران است
+                            که همیشه تلاش کرده تا
+                            بتواند جدیدترین و بروزترین مقالات و دوره‌های آموزشی را در اختیار علاقه‌مندان ایرانی قرار
+                            دهد. تبدیل کردن برنامه نویسان ایرانی به بهترین برنامه نویسان جهان هدف ماست</p>
+                    </div>
+                    <div class="col-12 col-lg-1"></div>
+                    <div class="col-12 col-lg-2"><br>
+                        <h6>بخش های سایت</h6>
+                        <hr class="header-caption-footer">
+                        <a style="color: #fff; display:block;margin-top: 10px;" href="">قوانین و مقررات</a>
+                        <a style="color: #fff; display:block;margin-top: 10px;"  href="">تبلیغات</a>
+                        <a style=" color: #fff; display:block;margin-top: 10px;" href="">درباره راکت</a>
+                        <a style="color: #fff; display:block;margin-top: 10px;"  href="">ارتباط با ما</a>
+                    </div>
+                    <div class=" col-12 col-lg-1">
+                    </div>
+                    <div class="col-12 col-lg-3"><br>
+                        <h6>ارتباط با ما</h6>
+                        <hr class="header-caption-footer">
+                        <p class="caption-footer">شما میتوانید با استفاده از یکی از راه‌های زیر با ما ارتباط برقرار کنید
+                        </p>
+                        <div>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
+                            </svg>
+                            <span>
+                                 ایمیل :‌ info@roocket.ir
+                            </span>
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-forward-fill"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.471 17.471 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969zM12.646.646a.5.5 0 0 1 .708 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 0 1-.708-.708L14.293 4H9.5a.5.5 0 0 1 0-1h4.793l-1.647-1.646a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                            <span> تماس: 09135882813</span>
+                        </div><br>
+                    </div>
+                </div>
+                <br class="d-none d-lg-flex">
+            </div>
+        </div>
+    </footer>
+    <footer class="footer2">
+        <div class="container">
+            <p>کليه حقوق محصولات و محتوای اين سایت متعلق به راکت می باشد و هر گونه کپی برداری از محتوا و محصولات سایت
+                غیر
+                مجاز و بدون رضایت ماست</p>
+        </div>
+    </footer>
+
+
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"
+        integrity="sha512-GWzVrcGlo0TxTRvz9ttioyYJ+Wwk9Ck0G81D+eO63BaqHaJ3YZX9wuqjwgfcV/MrB2PhaVX9DkYVhbFpStnqpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

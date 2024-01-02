@@ -74,3 +74,12 @@ where OD.products_id = P.ID
   and O.customer_id = C.ID
   and O.items_id = OD.ID
   and O.payment_id = PA.id;
+
+create table log_tbl
+(
+    id number,
+    class_name nvarchar2(50),
+    log_type nvarchar2(50),
+    data nvarchar2(50)
+);
+create sequence log_seq start with  1 increment by 1;

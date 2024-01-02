@@ -1,5 +1,6 @@
 package mft.model.repository;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Customer;
 import mft.model.repository.impl.Da;
 import mft.model.tools.JdbcProvider;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j
 public class CustomerRepository implements Da<Customer>, AutoCloseable{
 
         private PreparedStatement preparedStatement;
@@ -38,6 +40,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
         preparedStatement.setString(8, customer.getEmail());
         preparedStatement.setBoolean(9, customer.isStatus());
         preparedStatement.execute();
+        log.info("customer repository");
         return customer;
     }
 
