@@ -38,6 +38,7 @@ public class OrderDetailsController {
                         .builder()
                         .products(Products
                                 .builder()
+                                .id(id)
                                 .name(products)
                                 .build())
                         .quantity(quantity)

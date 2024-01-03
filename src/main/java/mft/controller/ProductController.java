@@ -44,6 +44,7 @@ public class ProductController {
             Products products =
                     Products
                             .builder()
+                            .id(id)
                             .name(name)
                             .brand(brand)
                             .size(size)

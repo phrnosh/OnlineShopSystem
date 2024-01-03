@@ -58,6 +58,7 @@ public class CustomerController {
             Customer customer =
                     Customer
                             .builder()
+                            .id(id)
                             .name(name)
                             .family(family)
                             .username(username)

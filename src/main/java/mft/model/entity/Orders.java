@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Orders {
     private int id;
     private Customer customer;
-    private ArrayList<OrderDetails> items;
+    private OrderDetails items;
     private float amount;
     private float discount;
     private Payment payment;

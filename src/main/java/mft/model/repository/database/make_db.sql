@@ -37,6 +37,7 @@ create table payment_tbl
     id number primary key ,
     totalcost  number(20),
     paymentdetails nvarchar2(50),
+    type char(13),
     paymentdate timestamp
 );
 create sequence payment_seq start with 1 increment by 1;
