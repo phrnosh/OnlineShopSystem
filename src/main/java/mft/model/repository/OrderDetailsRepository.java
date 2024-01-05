@@ -1,5 +1,6 @@
 package mft.model.repository;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Products;
 import mft.model.repository.impl.Da;
@@ -11,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j
 public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
 
     private PreparedStatement preparedStatement;
@@ -31,10 +33,11 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                 "insert into orderDetails_tbl(id, products_id, quantity) values (?, ?, ?)"
         );
         preparedStatement.setInt(1, orderDetails.getId());
-        preparedStatement.setString(2, orderDetails.getProducts().getName());
+        preparedStatement.setInt(2, orderDetails.getProducts().getId());
         preparedStatement.setInt(3, orderDetails.getQuantity());
 
         preparedStatement.execute();
+        log.info("orderDetails repository");
         return orderDetails;
     }
 
@@ -44,7 +47,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         preparedStatement = connection.prepareStatement(
                 "update orderDetails_tbl SET products_id=?, quantity=? where id=? "
         );
-        preparedStatement.setString(1, orderDetails.getProducts().getName());
+        preparedStatement.setInt(1, orderDetails.getProducts().getId());
         preparedStatement.setInt(2, orderDetails.getQuantity());
         preparedStatement.setInt(3, orderDetails.getId());
 
@@ -80,7 +83,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .name(resultSet.getString("name"))
+                                    .id(resultSet.getInt("id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
                             .build();
@@ -106,7 +109,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .name(resultSet.getString("name"))
+                                    .id(resultSet.getInt("id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
                             .build();
@@ -134,7 +137,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .name(resultSet.getString("name"))
+                                    .id(resultSet.getInt("id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
                             .build();

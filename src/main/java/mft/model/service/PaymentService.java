@@ -1,10 +1,11 @@
 package mft.model.service;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Payment;
 import mft.model.repository.PaymentRepository;
 
 import java.util.List;
-
+@Log4j
 public class PaymentService {
 
     private static PaymentService service = new PaymentService();

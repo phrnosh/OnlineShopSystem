@@ -1,11 +1,15 @@
 package mft.model.service;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Products;
 import mft.model.repository.ProductRepository;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 
+@Log4j
 public class ProductService {
+
     private static ProductService service = new ProductService();
 
     private ProductService() {

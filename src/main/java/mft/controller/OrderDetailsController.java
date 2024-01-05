@@ -1,13 +1,14 @@
 package mft.controller;
 
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Products;
 import mft.model.service.OrderDetailsService;
 
 import java.util.List;
 import java.util.regex.Pattern;
-
+@Log4j
 public class OrderDetailsController {
     private static OrderDetailsController controller=new OrderDetailsController();
 
@@ -18,28 +19,33 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(String products, Integer quantity) throws Exception {
-        OrderDetails orderDetails =
-                OrderDetails
-                        .builder()
-                        .products(Products
-                                .builder()
-                                .name(products)
-                                .build())
-                        .quantity(quantity)
-                        .build();
+    public OrderDetails save(Products products, Integer quantity) throws Exception {
+//        if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,products)){
+            OrderDetails orderDetails =
+                    OrderDetails
+                            .builder()
+                            .products(Products
+                                    .builder()
+                                    .id(products.getId())
+                                    .build())
+                            .quantity(quantity)
+                            .build();
             OrderDetailsService.getService().save(orderDetails);
+        log.info("Save");
             return orderDetails;
+//        }else {
+//            throw new Exception("Invalid Data");
+//        }
     }
 
-    public OrderDetails edit(Integer id, String products, Integer quantity) throws Exception {
+    public OrderDetails edit(Integer id, Products products, Integer quantity) throws Exception {
         OrderDetails orderDetails =
                 OrderDetails
                         .builder()
+                        .id(id)
                         .products(Products
                                 .builder()
-                                .id(id)
-                                .name(products)
+                                .id(products.getId())
                                 .build())
                         .quantity(quantity)
                         .build();

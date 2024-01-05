@@ -1,5 +1,6 @@
 package mft.model.repository;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.*;
 import mft.model.repository.impl.Da;
 import mft.model.tools.JdbcProvider;
@@ -10,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
+@Log4j
 public class OrdersRepository implements Da<Orders>, AutoCloseable {
 
     private PreparedStatement preparedStatement;
@@ -28,18 +29,19 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         orders.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into orders_tbl(id, customer_id, item_id, payment_id, amount, discount, orderdate) values (?, ?, ?, ?, ?, ?, ?)"
+                "insert into orders_tbl(id, customer_id, items_id, payment_id, amount, discount, orderdate) values (?, ?, ?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, orders.getId());
-        preparedStatement.setString(2, orders.getCustomer().getFamily());
-        preparedStatement.setString(3, orders.getItems().getProducts().getName());
-        preparedStatement.setDouble(4, orders.getPayment().getTotalCost());
-        preparedStatement.setFloat(5, orders.getAmount());
+        preparedStatement.setInt(2, orders.getCustomer().getId());
+        preparedStatement.setInt(3, orders.getItems().getProducts().getId());
+        preparedStatement.setInt(4, orders.getPayment().getId());
+        preparedStatement.setDouble(5, orders.getAmount());
         preparedStatement.setFloat(6, orders.getDiscount());
         preparedStatement.setTimestamp(7, Timestamp.valueOf(orders.getOrderDate()));
 
 
         preparedStatement.execute();
+        log.info("order repository");
         return orders;
     }
 
@@ -47,12 +49,12 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public Orders edit(Orders orders) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update orders_tbl SET customer_id=?, item_id=?, payment_id=?, amount=?, discount=?, orderdate=? where id=? "
+                "update orders_tbl SET customer_id=?, items_id=?, payment_id=?, amount=?, discount=?, orderdate=? where id=? "
         );
-        preparedStatement.setString(1, orders.getCustomer().getFamily());
-        preparedStatement.setString(2, orders.getItems().getProducts().getName());
-        preparedStatement.setDouble(3, orders.getPayment().getTotalCost());
-        preparedStatement.setFloat(4, orders.getAmount());
+        preparedStatement.setInt(1, orders.getCustomer().getId());
+        preparedStatement.setInt(2, orders.getItems().getProducts().getId());
+        preparedStatement.setInt(3, orders.getPayment().getId());
+        preparedStatement.setDouble(4, orders.getAmount());
         preparedStatement.setFloat(5, orders.getDiscount());
         preparedStatement.setTimestamp(6, Timestamp.valueOf(orders.getOrderDate()));
         preparedStatement.setInt(7, orders.getId());
@@ -99,7 +101,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .products(Products
                                             .builder()
                                             .name(resultSet.getString("name"))
-                                            .price(resultSet.getFloat("price"))
+                                            .price(resultSet.getDouble("price"))
                                             .build())
                                     .quantity(resultSet.getInt("quantity"))
                                     .build())
@@ -142,7 +144,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .products(Products
                                             .builder()
                                             .name(resultSet.getString("name"))
-                                            .price(resultSet.getFloat("price"))
+                                            .price(resultSet.getDouble("price"))
                                             .build())
                                     .quantity(resultSet.getInt("quantity"))
                                     .build())
@@ -187,7 +189,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .products(Products
                                             .builder()
                                             .name(resultSet.getString("name"))
-                                            .price(resultSet.getFloat("price"))
+                                            .price(resultSet.getDouble("price"))
                                             .build())
                                     .quantity(resultSet.getInt("quantity"))
                                     .build())

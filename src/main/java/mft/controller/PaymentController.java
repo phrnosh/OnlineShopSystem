@@ -1,12 +1,13 @@
 package mft.controller;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Payment;
 import mft.model.entity.enums.PaymentType;
 import mft.model.service.PaymentService;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Log4j
 public class PaymentController {
     private static PaymentController controller=new PaymentController();
 
@@ -27,6 +28,7 @@ public class PaymentController {
                         .PaymentTimeStamp(paymentdate)
                         .build();
         PaymentService.getService().save(payment);
+        log.info("Save");
         return payment;
     }
 

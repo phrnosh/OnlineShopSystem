@@ -1,10 +1,12 @@
 package mft.model.service;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Customer;
 import mft.model.repository.CustomerRepository;
 
 import java.util.List;
 
+@Log4j
 public class CustomerService {
     private static CustomerService service = new CustomerService();
 
@@ -18,6 +20,7 @@ public class CustomerService {
     public Customer save(Customer customer) throws Exception {
         try (CustomerRepository customerRepository = new CustomerRepository()) {
             if (customerRepository.findByUsername(customer.getUsername()) == null) {
+                log.info("save");
                 return customerRepository.save(customer);
             } else {
                 throw new Exception();

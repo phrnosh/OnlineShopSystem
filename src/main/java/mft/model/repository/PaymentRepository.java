@@ -1,5 +1,6 @@
 package mft.model.repository;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Payment;
 import mft.model.entity.Products;
@@ -13,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
+@Log4j
 public class PaymentRepository implements Da<Payment>, AutoCloseable{
 
     private PreparedStatement preparedStatement;
@@ -31,15 +32,16 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         payment.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into payment_tbl(id, totalcost, paymentdetails, Type, paymentdate) values (?, ?, ?, ?, ?)"
+                "insert into payment_tbl(id, totalcost, paymentdetails, type, paymentdate) values (?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, payment.getId());
         preparedStatement.setDouble(2, payment.getTotalCost());
-        preparedStatement.setString(3, payment.getPaymentType().name());
-        preparedStatement.setString(4, payment.getPaymentDetails());
+        preparedStatement.setString(3, payment.getPaymentDetails());
+        preparedStatement.setString(4, payment.getPaymentType().name());
         preparedStatement.setTimestamp(5, Timestamp.valueOf(payment.getPaymentTimeStamp()));
 
         preparedStatement.execute();
+        log.info("payment repository");
         return payment;
     }
 
@@ -47,12 +49,12 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public Payment edit(Payment payment) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update payment_tbl SET totalcost=?, paymentdetails=?, Type=?, paymentdate=? where id=? "
+                "update payment_tbl SET totalcost=?, paymentdetails=?, type=?, paymentdate=? where id=? "
         );
 
         preparedStatement.setDouble(1, payment.getTotalCost());
-        preparedStatement.setString(2, payment.getPaymentType().name());
-        preparedStatement.setString(3, payment.getPaymentDetails());
+        preparedStatement.setString(2, payment.getPaymentDetails());
+        preparedStatement.setString(3, payment.getPaymentType().name());
         preparedStatement.setTimestamp(4, Timestamp.valueOf(payment.getPaymentTimeStamp()));
         preparedStatement.setInt(5, payment.getId());
 

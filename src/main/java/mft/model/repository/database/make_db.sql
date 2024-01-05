@@ -18,7 +18,7 @@ create table product_tbl
     id number primary key ,
     name   nvarchar2(30),
     brand nvarchar2(30),
-    productSize number(5),
+    productSize nvarchar2(10),
     price number(10),
     description nvarchar2(50)
 );
@@ -37,7 +37,7 @@ create table payment_tbl
     id number primary key ,
     totalcost  number(20),
     paymentdetails nvarchar2(50),
-    type char(13),
+    type nvarchar2(20),
     paymentdate timestamp
 );
 create sequence payment_seq start with 1 increment by 1;
@@ -48,8 +48,8 @@ create table orders_tbl
     customer_id  references customer_tbl,
     items_id references orderDetails_tbl,
     payment_id references payment_tbl,
-    amount number(10),
-    discount number(5),
+    amount number(20),
+    discount number(20),
     orderdate timestamp
 );
 create sequence orders_seq start with 1 increment by 1;

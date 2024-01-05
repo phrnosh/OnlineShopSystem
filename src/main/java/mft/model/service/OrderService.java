@@ -1,10 +1,11 @@
 package mft.model.service;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Orders;
 import mft.model.repository.OrdersRepository;
 
 import java.util.List;
-
+@Log4j
 public class OrderService {
     private static OrderService service = new OrderService();
 

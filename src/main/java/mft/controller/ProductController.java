@@ -1,11 +1,13 @@
 package mft.controller;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Products;
 import mft.model.service.ProductService;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Log4j
 public class ProductController {
 
     private static ProductController controller=new ProductController();
@@ -17,10 +19,9 @@ public class ProductController {
         return controller;
     }
 
-    public Products save(String name, String brand, Float size, Float price , String description) throws Exception {
+    public Products save(String name, String brand, String size, Double price , String description) throws Exception {
         if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,name) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand)) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,description))) {
+                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand))) {
             Products products =
                     Products
                             .builder()
@@ -31,16 +32,16 @@ public class ProductController {
                             .description(description)
                             .build();
             ProductService.getService().save(products);
+            log.info("Save");
             return products;
         }else {
             throw new Exception("Invalid Data");
         }
     }
 
-    public Products edit(Integer id, String name, String brand, Float size, Float price , String description) throws Exception {
+    public Products edit(Integer id, String name, String brand, String size, Double price , String description) throws Exception {
         if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,name) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand)) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,description))) {
+                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand))) {
             Products products =
                     Products
                             .builder()

@@ -1,20 +1,29 @@
 package mft.model.entity;
 
+import com.google.gson.Gson;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import lombok.extern.log4j.Log4j;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-@ToString
 
+@Log4j
 public class Products {
     private int id;
     private String name;
     private String brand;
-//    private ProductGrouping group;
-    private float size;
-    private float price;
+    private String size;
+    private Double price;
     private String description;
+
+    public Products() {
+        log.info("Products Created");
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

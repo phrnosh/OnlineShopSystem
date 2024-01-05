@@ -1,5 +1,6 @@
 package mft.model.repository;
 
+import lombok.extern.log4j.Log4j;
 import mft.model.entity.Products;
 import mft.model.repository.impl.Da;
 import mft.model.tools.JdbcProvider;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+@Log4j
 public class ProductRepository implements Da<Products>,AutoCloseable {
 
     private PreparedStatement preparedStatement;
@@ -32,11 +34,12 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         preparedStatement.setInt(1, products.getId());
         preparedStatement.setString(2, products.getName());
         preparedStatement.setString(3, products.getBrand());
-        preparedStatement.setFloat(4, products.getSize());
-        preparedStatement.setFloat(5, products.getPrice());
+        preparedStatement.setString(4, products.getSize());
+        preparedStatement.setDouble(5, products.getPrice());
         preparedStatement.setString(6, products.getDescription());
 
         preparedStatement.execute();
+        log.info("Product Repository");
         return products;
     }
 
@@ -48,8 +51,8 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         );
         preparedStatement.setString(1, products.getName());
         preparedStatement.setString(2, products.getBrand());
-        preparedStatement.setFloat(3, products.getSize());
-        preparedStatement.setFloat(4, products.getPrice());
+        preparedStatement.setString(3, products.getSize());
+        preparedStatement.setDouble(4, products.getPrice());
         preparedStatement.setString(5, products.getDescription());
         preparedStatement.setInt(6, products.getId());
 
@@ -85,8 +88,8 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getFloat("size"))
-                            .price(resultSet.getFloat("price"))
+                            .size(resultSet.getString("size"))
+                            .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();
             productsList.add(products);
@@ -113,8 +116,8 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getFloat("size"))
-                            .price(resultSet.getFloat("price"))
+                            .size(resultSet.getString("size"))
+                            .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();
             productsList.add(products);
@@ -141,8 +144,8 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getFloat("size"))
-                            .price(resultSet.getFloat("price"))
+                            .size(resultSet.getString("size"))
+                            .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();
         }

@@ -24,7 +24,6 @@ public class CustomerController {
                 (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,family)) &&
                 (Pattern.matches("^[a-z\\d\\S\\._]{3,30}$" ,username)) &&
                 (Pattern.matches("^[\\w\\S]{3,30}$" , password)) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,address)) &&
                 (Pattern.matches("^(\\+989|09)\\d{6,9}$" , phoneNumber)) &&
                 (Pattern.matches("^[a-zA-Z\\d\\._]+@(gmail|yahoo)\\.com$" , email))) {
             Customer customer =
@@ -52,7 +51,6 @@ public class CustomerController {
                 (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,family)) &&
                 (Pattern.matches("^[a-z\\d\\S\\._]{3,30}$" ,username)) &&
                 (Pattern.matches("^[\\w\\S]{3,30}$" , password)) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,address)) &&
                 (Pattern.matches("^(\\+989|09)\\d{6,9}$" , phoneNumber)) &&
                 (Pattern.matches("^[a-zA-Z\\d\\._]+@(gmail|yahoo)\\.com$" , email))) {
             Customer customer =
