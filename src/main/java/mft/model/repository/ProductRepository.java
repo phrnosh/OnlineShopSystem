@@ -66,7 +66,6 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         preparedStatement = connection.prepareStatement(
                 "Delete FROM PRODUCT_TBL WHERE ID=?"
         );
-
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
         return null;
@@ -88,7 +87,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getString("size"))
+                            .size(resultSet.getString("productSize"))
                             .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();
@@ -102,10 +101,10 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM PRODUCT_TBL WHERE NAME LIKE ? or BRAND LIKE ? OR PRICE LIKE ? OR DESCRIPTION LIKE ? "
         );
-        preparedStatement.setString(1, searchText);
-        preparedStatement.setString(2, searchText);
-        preparedStatement.setString(3, searchText);
-        preparedStatement.setString(4, searchText);
+        preparedStatement.setString(1, searchText + "%");
+        preparedStatement.setString(2, searchText + "%");
+        preparedStatement.setString(3, searchText + "%");
+        preparedStatement.setString(4, searchText + "%");
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Products> productsList = new ArrayList<>();
@@ -116,7 +115,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getString("size"))
+                            .size(resultSet.getString("productSize"))
                             .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();
@@ -144,7 +143,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .id(resultSet.getInt("id"))
                             .name(resultSet.getString("name"))
                             .brand(resultSet.getString("brand"))
-                            .size(resultSet.getString("size"))
+                            .size(resultSet.getString("productSize"))
                             .price(resultSet.getDouble("price"))
                             .description(resultSet.getString("description"))
                             .build();

@@ -19,14 +19,15 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(Products products, Integer quantity) throws Exception {
+    public OrderDetails save(String products, Integer quantity) throws Exception {
 //        if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,products)){
             OrderDetails orderDetails =
                     OrderDetails
                             .builder()
+//                            .products(new Products())
                             .products(Products
                                     .builder()
-                                    .id(products.getId())
+                                    .name(products)
                                     .build())
                             .quantity(quantity)
                             .build();

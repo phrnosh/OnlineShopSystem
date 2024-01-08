@@ -97,8 +97,8 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM orderDetails_tbl WHERE ID LIKE ? or PRODUCTS_ID LIKE ? "
         );
-        preparedStatement.setString(1, searchText);
-        preparedStatement.setString(2, searchText);
+        preparedStatement.setString(1, searchText + "%");
+        preparedStatement.setString(2, searchText + "%");
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<OrderDetails> orderDetailsList = new ArrayList<>();

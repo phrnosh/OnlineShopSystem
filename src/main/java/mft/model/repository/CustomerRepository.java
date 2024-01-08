@@ -36,7 +36,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
         preparedStatement.setString(4, customer.getUsername());
         preparedStatement.setString(5, customer.getPassword());
         preparedStatement.setString(6, customer.getAddress());
-        preparedStatement.setString(7, customer.getPhoneNumber());
+        preparedStatement.setString(7, customer.getPhoneNumber().trim());
         preparedStatement.setString(8, customer.getEmail());
         preparedStatement.setBoolean(9, customer.isStatus());
         preparedStatement.execute();
@@ -94,7 +94,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
                             .username(resultSet.getString("username"))
                             .password(resultSet.getString("password"))
                             .address(resultSet.getString("address"))
-                            .phoneNumber(resultSet.getString("phoneNumber"))
+                            .phoneNumber(resultSet.getString("phoneNumber").trim())
                             .email(resultSet.getString("email"))
                             .password(resultSet.getString("status"))
                             .build();
@@ -109,13 +109,13 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
                 "SELECT * FROM CUSTOMER_TBL WHERE ID LIKE ? or USERNAME LIKE ? " +
                         "or NAME LIKE ? OR FAMILY LIKE ? OR ADDRESS LIKE ? OR PHONENUMBER LIKE ? OR EMAIL LIKE ?"
         );
-        preparedStatement.setString(1, searchText);
-        preparedStatement.setString(2, searchText);
-        preparedStatement.setString(3, searchText);
-        preparedStatement.setString(4, searchText);
-        preparedStatement.setString(5, searchText);
-        preparedStatement.setString(6, searchText);
-        preparedStatement.setString(7, searchText);
+        preparedStatement.setString(1, searchText + "%");
+        preparedStatement.setString(2, searchText + "%");
+        preparedStatement.setString(3, searchText + "%");
+        preparedStatement.setString(4, searchText + "%");
+        preparedStatement.setString(5, searchText + "%");
+        preparedStatement.setString(6, searchText + "%");
+        preparedStatement.setString(7, searchText + "%");
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Customer> customerList = new ArrayList<>();
@@ -129,7 +129,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
                             .username(resultSet.getString("username"))
                             .password(resultSet.getString("password"))
                             .address(resultSet.getString("address"))
-                            .phoneNumber(resultSet.getString("phoneNumber"))
+                            .phoneNumber(resultSet.getString("phoneNumber").trim())
                             .email(resultSet.getString("email"))
                             .password(resultSet.getString("status"))
                             .build();
@@ -173,7 +173,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
         public Customer findByUsername(String username) throws Exception {
             connection = JdbcProvider.getJdbcProvider().getConnection();
             preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM CUSTOMER_TBL WHERE USERNAME=? OR USERNAME='admin' AND PASSWORD='admin'"
+                    "SELECT * FROM CUSTOMER_TBL WHERE USERNAME=?"
             );
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -186,7 +186,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
                                 .id(resultSet.getInt("id"))
                                 .name(resultSet.getString("name"))
                                 .family(resultSet.getString("family"))
-                                .username(resultSet.getString("username").trim())
+                                .username(resultSet.getString("username"))
                                 .password(resultSet.getString("password").trim())
                                 .address(resultSet.getString("address"))
                                 .phoneNumber(resultSet.getString("phoneNumber").trim())
@@ -200,7 +200,7 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
         public Customer findByUsernameAndPassword(String username, String password) throws Exception {
             connection = JdbcProvider.getJdbcProvider().getConnection();
             preparedStatement = connection.prepareStatement(
-                    "SELECT * FROM CUSTOMER_TBL WHERE USERNAME=? AND PASSWORD=?"
+                    "SELECT * FROM CUSTOMER_TBL WHERE USERNAME=? AND PASSWORD=? "
             );
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);

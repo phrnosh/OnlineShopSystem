@@ -20,7 +20,7 @@ public class LoginFrameController implements Initializable {
     private PasswordField passwordTxt;
 
     @FXML
-    private Button loginBtn;
+    private Button loginBtn, signBtn;
 
     @FXML
     private Label msgLbl;
@@ -36,11 +36,10 @@ public class LoginFrameController implements Initializable {
                 );
                 Stage stage = new Stage();
                 Scene scene = new Scene(
-                        FXMLLoader.load(getClass().getResource("loginFrame.fxml"))
+                        FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))
                 );
-//todo
                 stage.setScene(scene);
-                stage.setTitle("");
+                stage.setTitle("فروشگاه اینترنتی|مشاهده کالاها");
                 stage.show();
                 resetForm();
                 loginBtn.getParent().getScene().getWindow().hide();
@@ -52,6 +51,25 @@ public class LoginFrameController implements Initializable {
             }
         });
 
+        signBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("signinFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("Register Information");
+                stage.show();
+                resetForm();
+                signBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                msgLbl.setVisible(true);
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
     }
     public void resetForm() {
         try {

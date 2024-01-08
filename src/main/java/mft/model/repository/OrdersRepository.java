@@ -79,7 +79,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public List<Orders> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orders_REPORT"
+                "SELECT CUSTOMER_TBL FROM orders_REPORT"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -122,8 +122,8 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         preparedStatement = connection.prepareStatement(
                 "SELECT * FROM orders_REPORT WHERE item_id LIKE ? or customer_ID LIKE ? "
         );
-        preparedStatement.setString(1, searchText);
-        preparedStatement.setString(2, searchText);
+        preparedStatement.setString(1, searchText + "%");
+        preparedStatement.setString(2, searchText + "%");
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Orders> ordersList = new ArrayList<>();

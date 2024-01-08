@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class SigninFrameController implements Initializable {
     @FXML
-    private Button saveBtn;
+    private Button saveBtn, logBtn;
 
     @FXML
     private TextField idTxt, nameTxt, familyTxt, usernameTxt, phoneTxt, emailTxt;
@@ -31,7 +31,7 @@ public class SigninFrameController implements Initializable {
     private ToggleGroup activeToggleGroup;
 
     @FXML
-    private Label msgLbl;
+    private Label msgLbl, star1, star2;
 
     @FXML
     private RadioButton enableRdo, disableRdo;
@@ -51,7 +51,7 @@ public class SigninFrameController implements Initializable {
                         phoneTxt.getText(),
                         emailTxt.getText(),
                         (radioButton.getText().equals("Enable") ? true : false));
-
+//
 //                Stage stage = new Stage();
 //                Scene scene = new Scene(
 //                        FXMLLoader.load(getClass().getResource("loginFrame.fxml"))
@@ -67,22 +67,57 @@ public class SigninFrameController implements Initializable {
                 resetForm();
 
             } catch (Exception e) {
+                resetFormError();
                 msgLbl.setVisible(true);
+                star1.setVisible(true);
+                star2.setVisible(true);
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
                 alert.show();
             }
         });
 
+        logBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("loginFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("Register Information");
+                stage.show();
+                resetForm();
+                logBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
     }
 
     public void resetForm() {
         try {
-            idTxt.clear();
             usernameTxt.clear();
             passwordTxt.clear();
             phoneTxt.clear();
+            addressTxt.clear();
+            emailTxt.clear();
             activeToggleGroup.getSelectedToggle();
             msgLbl.setVisible(false);
+            star1.setVisible(false);
+            star2.setVisible(false);
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());
+            alert.show();
+        }
+    }
+    public void resetFormError() {
+        try {
+            usernameTxt.clear();
+            passwordTxt.clear();
+            phoneTxt.clear();
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());

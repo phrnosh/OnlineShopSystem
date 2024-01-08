@@ -16,40 +16,45 @@ public class UserTest {
         log.info("Main");
 
 //        System.out.println(CustomerController.getController().save(
-//                "zahra",
-//                "ahmadi",
-//                "zaahra",
+//                "ali",
+//                "alipour",
+//                "fdfsgs",
 //                "12369741",
 //                "khaiadhdabcjsbcj",
-//                "09148184037",
+//                "09866818437",
 //                "gadgions@gmail.com",
 //                true));
-//
+
 //        System.out.println(CustomerController.getController().edit(
 //                1,
 //                "ali",
-//                "alipour139765",
+//                "alipour",
+//                "fdfsgs",
+//                "12369741",
+//                "khaiadhdabcjsbcj",
+//                "09866818437",
+//                "gadgions@gmail.com",
 //                false));
 //
-//        System.out.println(CustomerController.getController().remove(2));
+//        System.out.println(ProductController.getController().remove(10));
 //
-//        System.out.println(CustomerController.getController().findAll());
+//        System.out.println(ProductController.getController().findByAll("bag"));
 //
 //        System.out.println(CustomerController.getController().findById(2));
 //
-//        System.out.println(CustomerController.getController().findByUsername("zahra"));
+//        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));
 
 //
 //
 //        System.out.println(ProductController.getController().save(
-//                "goshi iphone13promax",
-//                "apple",
-//                "8 inch",
-//                50000000.0,
-//                "گوشی عالی با کیفیت دوربین فوق العاده"));
-//
+//                "bag",
+//                "zara",
+//                "20cm",
+//                200000.0,
+//                "جنس خوب"));
+
 //       System.out.println(OrderDetailsController.getController().save(
-//                 new Products(),
+//                 ProductController.findByName(""),
 //                2));
 
 //        System.out.println(PaymentController.getController().save(
