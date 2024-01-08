@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="700.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.view.SigninFrameController">
+   <children>
+      <Pane layoutX="414.0" layoutY="85.0" prefHeight="549.0" prefWidth="575.0" style="-fx-background-color: white; -fx-border-color: dimgrey; -fx-border-width: 1px 3px 3px 1px;">
+         <children>
+            <GridPane layoutX="54.0" layoutY="84.0" prefHeight="345.0" prefWidth="253.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="80.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="147.0" minWidth="10.0" prefWidth="147.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="34.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="idTxt" disable="true" visible="false" GridPane.columnIndex="1" />
+                  <TextField fx:id="nameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="familyTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="usernameTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="passwordTxt" prefWidth="147.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextArea fx:id="addressTxt" prefHeight="38.0" prefWidth="141.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="phoneTxt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <TextField fx:id="emailTxt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <Label text="Username :" GridPane.rowIndex="3" />
+                  <Label text="Password :" GridPane.rowIndex="4" />
+                  <Label text="Status:" GridPane.rowIndex="8" />
+                  <RadioButton fx:id="enableRdo" mnemonicParsing="false" selected="true" text="Enable" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="activeToggleGroup" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="disableRdo" contentDisplay="CENTER" mnemonicParsing="false" text="Disable" toggleGroup="$activeToggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <GridPane.margin>
+                        <Insets left="70.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <Label text="Name:" GridPane.rowIndex="1" />
+                  <Label text="Family:" GridPane.rowIndex="2" />
+                  <Label text="Phone Number:" GridPane.rowIndex="6" />
+                  <Label text="Email:" GridPane.rowIndex="7" />
+                  <Label text="Address:" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="55.0" layoutY="36.0" text="Sign in" textFill="#6a6f6c">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="55.0" layoutY="76.0" text="اطلاعات خود را سایت ثبت کنید" textFill="#2d2f2e">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Label>
+            <Button fx:id="saveBtn" layoutX="56.0" layoutY="469.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #30a0c2;" text="ثبت نام" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="logBtn" layoutX="173.0" layoutY="477.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: white;" text="Log in" textFill="#30a0c2" underline="true">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="msgLbl" layoutX="68.0" layoutY="436.0" prefHeight="25.0" prefWidth="253.0" text="لطفا نام کاربری یا شماره دیگری انتخاب کنید!" textFill="#c60303" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="star1" layoutX="46.0" layoutY="320.0" prefHeight="25.0" prefWidth="8.0" text="*" textFill="#c60303" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="star2" layoutX="46.0" layoutY="203.0" prefHeight="25.0" prefWidth="8.0" text="*" textFill="#c60303" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</Pane>

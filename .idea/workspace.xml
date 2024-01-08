@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="JavaFX">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/orderFrame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/searchProductFrame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/loginFrame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/searchProductFrame.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/signinFrame.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/App.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/LoginFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/LoginFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/SigninFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/SigninFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/loginFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/loginFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/signinFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/signinFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +70,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -173,7 +164,7 @@
       <workItem from="1704545627000" duration="12463000" />
       <workItem from="1704620929154" duration="19121000" />
       <workItem from="1704652123690" duration="261000" />
-      <workItem from="1704721724090" duration="626000" />
+      <workItem from="1704721724090" duration="1346000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -231,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704472584661</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="JavaFX">
+      <option name="closed" value="true" />
+      <created>1704722807430</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704722807430</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
