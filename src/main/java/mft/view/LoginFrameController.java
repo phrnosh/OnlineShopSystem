@@ -30,13 +30,26 @@ public class LoginFrameController implements Initializable {
         resetForm();
         loginBtn.setOnAction ((event) -> {
             try {
+//                if (equals(true)){
+//                    Stage stage = new Stage();
+//                    Scene scene = new Scene(
+//                            FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
+//                    );
+//                    stage.setScene(scene);
+//                    stage.setTitle("دسترسی ادمین به بخش کالاها");
+//                    stage.show();
+//                    resetForm();
+//                    loginBtn.getParent().getScene().getWindow().hide();
+//
+//                }
+
                 Customer customer = (Customer) CustomerController.getController().findByUsernameAndPassword(
                         usernameTxt.getText(),
                         passwordTxt.getText()
                 );
                 Stage stage = new Stage();
                 Scene scene = new Scene(
-                        FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))
+                        FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
                 );
                 stage.setScene(scene);
                 stage.setTitle("فروشگاه اینترنتی|مشاهده کالاها");
@@ -50,7 +63,26 @@ public class LoginFrameController implements Initializable {
                 alert.show();
             }
         });
-
+//        loginBtn.setOnAction ((event) -> {
+//            try {
+//                  usernameTxt.setText("admin");
+//                  passwordTxt.setText("admin");
+//                Stage stage = new Stage();
+//                Scene scene = new Scene(
+//                        FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
+//                );
+//                stage.setScene(scene);
+//                stage.setTitle("دسترسی ادمین به بخش کالاها");
+//                stage.show();
+//                resetForm();
+//                loginBtn.getParent().getScene().getWindow().hide();
+//
+//            } catch (Exception e) {
+//                msgLbl.setVisible(true);
+//                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+//                alert.show();
+//            }
+//        });
         signBtn.setOnAction ((event) -> {
             try {
                 Stage stage = new Stage();
@@ -71,6 +103,13 @@ public class LoginFrameController implements Initializable {
             }
         });
     }
+
+//    private boolean equals(boolean obj) {
+//        usernameTxt.setText("admin");
+//        passwordTxt.setText("admin");
+//        return obj;
+//    }
+
     public void resetForm() {
         try {
             usernameTxt.clear();

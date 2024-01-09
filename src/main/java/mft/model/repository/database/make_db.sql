@@ -11,11 +11,6 @@ create table customer_tbl
     email nvarchar2(50),
     status   number(1)
 );
-insert into customer_tbl
-(id, name, family, username, password, address, phoneNumber, email, status)
-VALUES (1,'admin','admin','admin','admin',null,null,null,true);
-commit ;
-
 create sequence customer_seq start with 2 increment by 1;
 
 create table product_tbl
@@ -34,8 +29,8 @@ create table orderDetails_tbl
     id number primary key ,
     products_id references product_tbl,
     quantity number(10),
-    price number(10),
-    invoice_id
+    price references product_tbl,
+    invoice_id number
 );
 create sequence orderDetails_seq start with 1 increment by 1;
 

@@ -54,8 +54,14 @@ public class UserTest {
 //                "جنس خوب"));
 
 //       System.out.println(OrderDetailsController.getController().save(
-//                 ProductController.findByName(""),
+//                 ProductController.getController().findByName("kjhg"),
 //                2));
+
+//               System.out.println(OrderDetailsController.getController().save(
+//                "goshi",
+//                2,
+//                300000.0));
+//
 
 //        System.out.println(PaymentController.getController().save(
 //                100009000.0,

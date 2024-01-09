@@ -30,11 +30,13 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         orderDetails.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into orderDetails_tbl(id, products_id, quantity) values (?, ?, ?)"
+                "insert into orderDetails_tbl(id, products_id, price, quantity) values (?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, orderDetails.getId());
         preparedStatement.setInt(2, orderDetails.getProducts().getId());
         preparedStatement.setInt(3, orderDetails.getQuantity());
+        preparedStatement.setDouble(4, orderDetails.getProducts().getPrice());
+
 
         preparedStatement.execute();
         log.info("orderDetails repository");
@@ -45,11 +47,12 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public OrderDetails edit(OrderDetails orderDetails) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update orderDetails_tbl SET products_id=?, quantity=? where id=? "
+                "update orderDetails_tbl SET price=?, products_id=?, quantity=? where id=? "
         );
         preparedStatement.setInt(1, orderDetails.getProducts().getId());
         preparedStatement.setInt(2, orderDetails.getQuantity());
-        preparedStatement.setInt(3, orderDetails.getId());
+        preparedStatement.setDouble(3, orderDetails.getProducts().getPrice());
+        preparedStatement.setInt(4, orderDetails.getId());
 
         preparedStatement.execute();
         return orderDetails;
@@ -83,9 +86,13 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .id(resultSet.getInt("id"))
+                                    .name(resultSet.getString("products_id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
+                            .products(Products
+                                    .builder()
+                                    .price(resultSet.getDouble("price"))
+                                    .build())
                             .build();
             orderDetailsList.add(orderDetails);
         }
@@ -109,9 +116,13 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .id(resultSet.getInt("id"))
+                                    .name(resultSet.getString("products_id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
+                            .products(Products
+                                    .builder()
+                                    .price(resultSet.getDouble("price"))
+                                    .build())
                             .build();
             orderDetailsList.add(orderDetails);
         }
@@ -137,9 +148,13 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .products(Products
                                     .builder()
-                                    .id(resultSet.getInt("id"))
+                                    .name(resultSet.getString("products_id"))
                                     .build())
                             .quantity(resultSet.getInt("quantity"))
+                            .products(Products
+                                    .builder()
+                                    .price(resultSet.getDouble("price"))
+                                    .build())
                             .build();
         }
         return orderDetails;

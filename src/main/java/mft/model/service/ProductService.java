@@ -3,7 +3,6 @@ package mft.model.service;
 import lombok.extern.log4j.Log4j;
 import mft.model.entity.Products;
 import mft.model.repository.ProductRepository;
-import org.apache.log4j.Logger;
 
 import java.util.List;
 
@@ -61,4 +60,9 @@ public class ProductService {
         }
     }
 
+    public Products findByName(String name) throws Exception {
+        try (ProductRepository productRepository = new ProductRepository()) {
+            return productRepository.findByName(name);
+        }
+    }
 }

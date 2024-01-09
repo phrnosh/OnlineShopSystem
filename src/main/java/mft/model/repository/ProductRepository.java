@@ -151,6 +151,32 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         return products;
     }
 
+    public Products findByName(String name) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM PERSON_TBL WHERE NAME LIKE ?"
+        );
+        preparedStatement.setString(1, name + "%");
+        preparedStatement.execute();
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Products products = null;
+
+        while (resultSet.next()) {
+            products =
+                    Products
+                            .builder()
+                            .id(resultSet.getInt("id"))
+                            .name(resultSet.getString("name"))
+                            .brand(resultSet.getString("brand"))
+                            .size(resultSet.getString("productSize"))
+                            .price(resultSet.getDouble("price"))
+                            .description(resultSet.getString("description"))
+                            .build();
+        }
+        return products;
+    }
+
     @Override
     public void close() throws Exception {
         preparedStatement.close();

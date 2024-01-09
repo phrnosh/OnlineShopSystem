@@ -19,8 +19,7 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(String products, Integer quantity) throws Exception {
-//        if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,products)){
+    public OrderDetails save(String products, Integer quantity, Double price) throws Exception {
             OrderDetails orderDetails =
                     OrderDetails
                             .builder()
@@ -30,13 +29,14 @@ public class OrderDetailsController {
                                     .name(products)
                                     .build())
                             .quantity(quantity)
+                            .products(Products
+                                    .builder()
+                                    .price(price)
+                                    .build())
                             .build();
             OrderDetailsService.getService().save(orderDetails);
         log.info("Save");
             return orderDetails;
-//        }else {
-//            throw new Exception("Invalid Data");
-//        }
     }
 
     public OrderDetails edit(Integer id, Products products, Integer quantity) throws Exception {

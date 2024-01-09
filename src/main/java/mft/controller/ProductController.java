@@ -20,8 +20,6 @@ public class ProductController {
     }
 
     public Products save(String name, String brand, String size, Double price , String description) throws Exception {
-        if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,name) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand))) {
             Products products =
                     Products
                             .builder()
@@ -34,14 +32,9 @@ public class ProductController {
             ProductService.getService().save(products);
             log.info("Save");
             return products;
-        }else {
-            throw new Exception("Invalid Data");
-        }
     }
 
     public Products edit(Integer id, String name, String brand, String size, Double price , String description) throws Exception {
-        if (Pattern.matches("^[a-zA-Z\\d\\s\\._\\,]{3,30}$" ,name) &&
-                (Pattern.matches("^[a-zA-Z\\d\\s]{3,30}$" ,brand))) {
             Products products =
                     Products
                             .builder()
@@ -54,9 +47,6 @@ public class ProductController {
                             .build();
             ProductService.getService().edit(products);
             return products;
-        }else {
-            throw new Exception("Invalid Data");
-        }
     }
 
     public Products remove(Integer id) throws Exception {
@@ -75,6 +65,10 @@ public class ProductController {
 
     public Products findById(Integer id) throws Exception {
         return ProductService.getService().findById(id);
+    }
+
+    public Products findByName(String name) throws Exception {
+        return ProductService.getService().findByName(name);
     }
 }
 

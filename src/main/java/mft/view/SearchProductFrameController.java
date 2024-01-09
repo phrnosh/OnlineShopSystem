@@ -37,7 +37,8 @@ public class SearchProductFrameController implements Initializable {
             try {
                 OrderDetails orderDetails = OrderDetailsController.getController().save(
                         nameTxt.getText(),
-                        Integer.valueOf(countTxt.getText()));
+                        Integer.valueOf(countTxt.getText()),
+                        Double.valueOf(priceTxt.getText()));
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
                 alert.show();
                 resetForm();
@@ -51,12 +52,9 @@ public class SearchProductFrameController implements Initializable {
         productTbl.setOnMouseClicked((event) -> {
             Products products = productTbl.getSelectionModel().getSelectedItem();
 
-//            idTxt.setVisible(true);
-//            nameTxt.setVisible(true);
-//            brandTxt.setVisible(true);
-//            priceTxt.setVisible(true);
             countTxt.setVisible(true);
             numLb.setVisible(true);
+            countTxt.clear();
 
             idTxt.setText(String.valueOf(products.getId()));
             nameTxt.setText(products.getName());
