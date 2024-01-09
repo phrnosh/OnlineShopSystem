@@ -49,7 +49,7 @@ public class LoginFrameController implements Initializable {
                 );
                 Stage stage = new Stage();
                 Scene scene = new Scene(
-                        FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
+                        FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))
                 );
                 stage.setScene(scene);
                 stage.setTitle("فروشگاه اینترنتی|مشاهده کالاها");

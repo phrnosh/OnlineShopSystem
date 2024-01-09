@@ -90,5 +90,14 @@
             </TitledPane>
          </children>
       </Pane>
+      <Pane layoutX="114.0" layoutY="76.0" prefHeight="583.0" prefWidth="147.0" style="-fx-background-color: white;">
+         <children>
+            <Accordion layoutX="5.0" layoutY="8.0" prefHeight="26.0" prefWidth="135.0">
+              <panes>
+                <TitledPane fx:id="editTp" animated="false" prefHeight="26.0" prefWidth="128.0" text="ویرایش حساب کاربری" />
+              </panes>
+            </Accordion>
+         </children>
+      </Pane>
    </children>
 </Pane>

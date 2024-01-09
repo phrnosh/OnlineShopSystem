@@ -13,7 +13,7 @@ public class App  extends Application {
     public void start(Stage primaryStage) {
         log.info("main");
         try {
-            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("loginFrame.fxml"));
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("orderDetailFrame.fxml"));
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Log in");

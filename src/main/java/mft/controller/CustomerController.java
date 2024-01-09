@@ -46,7 +46,7 @@ public class CustomerController {
         }
     }
 
-    public Customer edit(Integer id, String name, String family, String username, String password , String address, String phoneNumber, String email, Boolean status) throws Exception {
+    public Customer edit(String name, String family, String username, String password , String address, String phoneNumber, String email, Boolean status) throws Exception {
         if (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,name) &&
                 (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,family)) &&
                 (Pattern.matches("^[a-z\\d\\S\\._]{3,30}$" ,username)) &&
@@ -56,7 +56,6 @@ public class CustomerController {
             Customer customer =
                     Customer
                             .builder()
-                            .id(id)
                             .name(name)
                             .family(family)
                             .username(username)

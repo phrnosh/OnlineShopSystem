@@ -26,16 +26,15 @@ public class UserTest {
 //                true));
 
 //        System.out.println(CustomerController.getController().edit(
-//                1,
 //                "ali",
 //                "alipour",
 //                "fdfsgs",
-//                "12369741",
-//                "khaiadhdabcjsbcj",
-//                "09866818437",
-//                "gadgions@gmail.com",
+//                "123456789",
+//                "اصفهان ...",
+//                "09126479515",
+//                "garftbjnks@gmail.com",
 //                false));
-//
+////
 //        System.out.println(ProductController.getController().remove(10));
 //
 //        System.out.println(ProductController.getController().findByAll("bag"));

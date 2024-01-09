@@ -69,31 +69,25 @@ public class OrderDetailFrameController implements Initializable {
 
         orderTbl.getColumns().clear();
 
-        TableColumn<OrderDetails, Integer> idCol = new TableColumn<>("Id");
+        TableColumn<OrderDetails, Integer> idCol = new TableColumn<>("#");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<OrderDetails, String> usernameCol = new TableColumn<>("Username");
-        usernameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+        TableColumn<OrderDetails, String> productNameCol = new TableColumn<>("Product Name");
+        productNameCol.setCellValueFactory(new PropertyValueFactory<>("Product_Id"));
 
-        TableColumn<OrderDetails, String> passwordCol = new TableColumn<>("Password");
-        passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
+        TableColumn<OrderDetails, String> quantityCol = new TableColumn<>("Quantity");
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        TableColumn<OrderDetails, Boolean> activeCol = new TableColumn<>("Active");
-        activeCol.setCellValueFactory(new PropertyValueFactory<>("active"));
+        TableColumn<OrderDetails, Boolean> priceCol = new TableColumn<>("Price");
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        orderTbl.getColumns().addAll(idCol, usernameCol, passwordCol, activeCol);
+        orderTbl.getColumns().addAll(idCol, productNameCol, quantityCol, priceCol);
         orderTbl.setItems(users);
     }
 
 
     public void resetForm(){
         try {
-//            idTxt.clear();
-//            usernameTxt.clear();
-//            passwordTxt.clear();
-//            activeToggleGroup.getSelectedToggle();
-//            msgLbl.setVisible(false);
-
             showDataOnTable(OrderDetailsController.getController().findAll());
 
         }catch (Exception e){

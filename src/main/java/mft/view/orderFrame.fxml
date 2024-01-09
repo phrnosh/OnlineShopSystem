@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.view.OrderFrameController">
+   <children>
+      <Pane layoutX="267.0" layoutY="103.0" prefHeight="536.0" prefWidth="836.0" style="-fx-background-color: white; -fx-border-color: dimgrey; -fx-border-width: 1px 3px 3px 1px;">
+         <children>
+            <Accordion layoutX="393.0" layoutY="479.0" />
+            <Accordion layoutX="648.0" layoutY="479.0" />
+            <Pane layoutX="98.0" layoutY="135.0" prefHeight="278.0" prefWidth="641.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 20px 20px; -fx-border-color: #dddddd; -fx-border-radius: 20px 20px;">
+               <children>
+                  <TableView fx:id="orderTbl" layoutX="55.0" layoutY="40.0" prefHeight="219.0" prefWidth="532.0">
+                     <columns>
+                        <TableColumn prefWidth="75.0" />
+                        <TableColumn prefWidth="75.0" />
+                     </columns>
+                     <opaqueInsets>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </opaqueInsets>
+                  </TableView>
+                  <Label alignment="CENTER" layoutX="528.0" layoutY="8.0" prefHeight="25.0" prefWidth="58.0" text="سفارش" textFill="#6a6f6c">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="backBtn" alignment="CENTER_RIGHT" layoutX="98.0" layoutY="81.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="641.0" style="-fx-background-color: #803b96; -fx-background-radius: 20px 20px;" text="   خرید ها" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label alignment="CENTER" layoutX="111.0" layoutY="88.0" prefHeight="25.0" prefWidth="58.0" text="بازگشت &gt;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Button fx:id="homeBtn" layoutX="762.0" layoutY="7.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: white;" text="Home" textFill="#808080">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</Pane>

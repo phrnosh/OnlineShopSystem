@@ -48,16 +48,16 @@ public class CustomerRepository implements Da<Customer>, AutoCloseable{
     public Customer edit(Customer customer) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update CUSTOMER_TBL SET name=?, family=?, username=?, password=?, address=?, phoneNumber=?, email=?, status=? where id=? "
+                "update CUSTOMER_TBL SET name=?, family=?, password=?, address=?, phoneNumber=?, email=?, status=? where username=? or id=?"
         );
         preparedStatement.setString(1, customer.getName());
         preparedStatement.setString(2, customer.getFamily());
-        preparedStatement.setString(3, customer.getUsername());
-        preparedStatement.setString(4, customer.getPassword());
-        preparedStatement.setString(5, customer.getAddress());
-        preparedStatement.setString(6, customer.getPhoneNumber());
-        preparedStatement.setString(7, customer.getEmail());
-        preparedStatement.setBoolean(8, customer.isStatus());
+        preparedStatement.setString(3, customer.getPassword());
+        preparedStatement.setString(4, customer.getAddress());
+        preparedStatement.setString(5, customer.getPhoneNumber());
+        preparedStatement.setString(6, customer.getEmail());
+        preparedStatement.setBoolean(7, customer.isStatus());
+        preparedStatement.setString(8, customer.getUsername());
         preparedStatement.setInt(9, customer.getId());
         preparedStatement.execute();
         return customer;

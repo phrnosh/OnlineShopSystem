@@ -3,9 +3,12 @@ package mft.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import mft.controller.OrderDetailsController;
 import mft.controller.ProductController;
 import mft.model.entity.Customer;
@@ -26,6 +29,9 @@ public class SearchProductFrameController implements Initializable {
 
     @FXML
     private Label idTxt, nameTxt, brandTxt, priceTxt, numLb;
+
+    @FXML
+    private TitledPane editTp;
 
     @FXML
     private TableView<Products> productTbl;
@@ -81,6 +87,26 @@ public class SearchProductFrameController implements Initializable {
                 alert.show();
             }
         });
+
+        editTp.setOnMouseClicked ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("editCustomerFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("ویرایش حساب کاربری");
+                stage.show();
+                resetForm();
+                editTp.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
     }
     private void showDataOnTable(List<Products> productsList) {
 
