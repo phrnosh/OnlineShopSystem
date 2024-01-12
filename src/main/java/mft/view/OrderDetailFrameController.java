@@ -7,10 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import mft.controller.OrderDetailsController;
+import mft.controller.PaymentController;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Payment;
+import mft.model.entity.enums.PaymentType;
 
 import java.net.URL;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -63,9 +67,9 @@ public class OrderDetailFrameController implements Initializable {
 //
 //        });
     }
-    private void showDataOnTable(List<OrderDetails> orderDetailsList) {
+    private void showDataOnOrderTable(List<OrderDetails> orderDetailsList) {
 
-        ObservableList<OrderDetails> users = FXCollections.observableList(orderDetailsList);
+        ObservableList<OrderDetails> orderDetails = FXCollections.observableList(orderDetailsList);
 
         orderTbl.getColumns().clear();
 
@@ -73,7 +77,7 @@ public class OrderDetailFrameController implements Initializable {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableColumn<OrderDetails, String> productNameCol = new TableColumn<>("Product Name");
-        productNameCol.setCellValueFactory(new PropertyValueFactory<>("Product_Id"));
+        productNameCol.setCellValueFactory(new PropertyValueFactory<>("Product_name"));
 
         TableColumn<OrderDetails, String> quantityCol = new TableColumn<>("Quantity");
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -82,14 +86,39 @@ public class OrderDetailFrameController implements Initializable {
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         orderTbl.getColumns().addAll(idCol, productNameCol, quantityCol, priceCol);
-        orderTbl.setItems(users);
+        orderTbl.setItems(orderDetails);
     }
 
+    private void showDataOnPaymentTable(List<Payment> paymentList) {
+
+        ObservableList<Payment> payments = FXCollections.observableList(paymentList);
+
+        paymentTbl.getColumns().clear();
+
+        TableColumn<Payment, Integer> idCol = new TableColumn<>("#");
+        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<Payment, Double> totalCostCol = new TableColumn<>("Total Cost");
+        totalCostCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
+
+        TableColumn<Payment, String> paymentDetailsCol = new TableColumn<>(" Payment Details");
+        paymentDetailsCol.setCellValueFactory(new PropertyValueFactory<>("paymentDetails"));
+
+        TableColumn<Payment, PaymentType> typeCol = new TableColumn<>("Payment Type");
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+
+        TableColumn<Payment, LocalDateTime> paymentDateCol = new TableColumn<>("Payment Date");
+        paymentDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+
+        paymentTbl.getColumns().addAll(idCol, totalCostCol, paymentDetailsCol, typeCol, paymentDateCol);
+        paymentTbl.setItems(payments);
+    }
 
     public void resetForm(){
         try {
-            showDataOnTable(OrderDetailsController.getController().findAll());
-
+            //TODO edit findAll
+            showDataOnOrderTable(OrderDetailsController.getController().findAll());
+            showDataOnPaymentTable(PaymentController.getController().findAll());
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());
             alert.show();

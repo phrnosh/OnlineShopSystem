@@ -2,10 +2,7 @@ package mft.test;
 
 import lombok.extern.log4j.Log4j;
 import mft.controller.*;
-import mft.model.entity.Customer;
-import mft.model.entity.OrderDetails;
-import mft.model.entity.Payment;
-import mft.model.entity.Products;
+import mft.model.entity.*;
 import mft.model.entity.enums.PaymentType;
 
 import java.time.LocalDateTime;
@@ -40,6 +37,8 @@ public class UserTest {
 //        System.out.println(ProductController.getController().findByAll("bag"));
 //
 //        System.out.println(CustomerController.getController().findById(2));
+
+//        System.out.println(OrderDetailsController.getController().findByPrice());
 //
 //        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));
 
@@ -57,10 +56,11 @@ public class UserTest {
 //                2));
 
 //               System.out.println(OrderDetailsController.getController().save(
-//                "goshi",
+//                null,
 //                2,
-//                300000.0));
-//
+//                300000.0,
+//                       2));
+
 
 //        System.out.println(PaymentController.getController().save(
 //                100009000.0,

@@ -89,9 +89,9 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .builder()
                             .id(resultSet.getInt("id"))
                             .totalCost(resultSet.getDouble("totalCost"))
-                            .PaymentDetails(resultSet.getString("PaymentDetails"))
-                            .PaymentType(PaymentType.valueOf(resultSet.getString("PaymentType")))
-                            .PaymentTimeStamp(resultSet.getTimestamp("PaymentTimeStamp").toLocalDateTime())
+                            .PaymentDetails(resultSet.getString("paymentDetails"))
+                            .PaymentType(PaymentType.valueOf(resultSet.getString("type")))
+                            .PaymentTimeStamp(resultSet.getTimestamp("paymentDate").toLocalDateTime())
 
                             .build();
             paymentList.add(payment);
@@ -143,8 +143,8 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .totalCost(resultSet.getDouble("totalCost"))
                             .PaymentDetails(resultSet.getString("PaymentDetails"))
-                            .PaymentType(PaymentType.valueOf(resultSet.getString("PaymentType")))
-                            .PaymentTimeStamp(resultSet.getTimestamp("PaymentTimeStamp").toLocalDateTime())
+                            .PaymentType(PaymentType.valueOf(resultSet.getString("Type")))
+                            .PaymentTimeStamp(resultSet.getTimestamp("PaymentDate").toLocalDateTime())
                             .build();
         }
         return payment;

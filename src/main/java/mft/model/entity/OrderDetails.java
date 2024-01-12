@@ -13,7 +13,9 @@ import lombok.extern.log4j.Log4j;
 public class OrderDetails {
     private int id;
     private Products products;
+    private double price;
     private int quantity;
+    private Orders order;
 
     public OrderDetails() {
         log.info("OrderDetails Created");

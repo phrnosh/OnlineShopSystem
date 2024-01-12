@@ -3,6 +3,7 @@ package mft.controller;
 
 import lombok.extern.log4j.Log4j;
 import mft.model.entity.OrderDetails;
+import mft.model.entity.Orders;
 import mft.model.entity.Products;
 import mft.model.service.OrderDetailsService;
 
@@ -19,7 +20,7 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(String products, Integer quantity, Double price) throws Exception {
+    public OrderDetails save(String products, Integer quantity, Double price, Integer invoiceId) throws Exception {
             OrderDetails orderDetails =
                     OrderDetails
                             .builder()
@@ -29,9 +30,10 @@ public class OrderDetailsController {
                                     .name(products)
                                     .build())
                             .quantity(quantity)
-                            .products(Products
+                            .price(price)
+                            .order(Orders
                                     .builder()
-                                    .price(price)
+                                    .id(invoiceId)
                                     .build())
                             .build();
             OrderDetailsService.getService().save(orderDetails);
@@ -39,7 +41,7 @@ public class OrderDetailsController {
             return orderDetails;
     }
 
-    public OrderDetails edit(Integer id, Products products, Integer quantity) throws Exception {
+    public OrderDetails edit(Integer id, Products products, Integer quantity, Double price, Integer invoiceId) throws Exception {
         OrderDetails orderDetails =
                 OrderDetails
                         .builder()
@@ -49,6 +51,14 @@ public class OrderDetailsController {
                                 .id(products.getId())
                                 .build())
                         .quantity(quantity)
+                        .products(Products
+                                .builder()
+                                .price(price)
+                                .build())
+                        .order(Orders
+                                .builder()
+                                .id(invoiceId)
+                                .build())
                         .build();
         OrderDetailsService.getService().edit(orderDetails);
             return orderDetails;
@@ -70,5 +80,9 @@ public class OrderDetailsController {
 
     public OrderDetails findById(Integer id) throws Exception {
         return OrderDetailsService.getService().findById(id);
+    }
+
+    public List<OrderDetails> findByPrice() throws Exception {
+        return OrderDetailsService.getService().findByPrice();
     }
 }

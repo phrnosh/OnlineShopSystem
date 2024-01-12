@@ -60,4 +60,10 @@ public class OrderDetailsService {
         }
     }
 
+    public List<OrderDetails> findByPrice() throws Exception {
+        try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
+            return orderDetailsRepository.findByPrice();
+        }
+    }
+
 }

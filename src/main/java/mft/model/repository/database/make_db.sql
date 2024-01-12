@@ -27,10 +27,10 @@ create sequence product_seq start with 1 increment by 1;
 create table orderDetails_tbl
 (
     id number primary key ,
-    products_id references product_tbl,
+    products_name references product_tbl,
     quantity number(10),
-    price references product_tbl,
-    invoice_id number
+    price number(20),
+    invoice_id references orders_tbl
 );
 create sequence orderDetails_seq start with 1 increment by 1;
 
@@ -48,7 +48,6 @@ create table orders_tbl
 (
     id number primary key ,
     customer_id  references customer_tbl,
-    items_id references orderDetails_tbl,
     payment_id references payment_tbl,
     amount number(20),
     discount number(20),
@@ -57,25 +56,17 @@ create table orders_tbl
 create sequence orders_seq start with 1 increment by 1;
 
 create view orders_report as
-select C.ID   as customer_id,
+select O.ID    as order_id,
+       C.ID   as customer_id,
        C.NAME   as customer_name,
        C.FAMILY as customer_family,
-       OD.ID     as item_id,
-       P.NAME  as product_name,
-       P.price as product_price,
-       OD.quantity as quantity,
        PA.totalcost  as totalcost,
-       O.ID    as order_id,
        O.discount as discount,
        O.orderdate
 from orders_tbl O,
      customer_tbl C,
-     orderDetails_tbl OD,
-     payment_tbl PA,
-     product_tbl P
-where OD.products_id = P.ID
-  and O.customer_id = C.ID
-  and O.items_id = OD.ID
+     payment_tbl PA
+where O.customer_id = C.ID
   and O.payment_id = PA.id;
 
 create table log_tbl

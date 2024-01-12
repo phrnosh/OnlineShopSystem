@@ -20,13 +20,6 @@ public class OrderController {
         return controller;
     }
 
-//    private static float getAmount (ArrayList<OrderDetails> items){
-//        float amount=0;
-//        for (OrderDetails orderDetails : items) {
-//            amount+= orderDetails.getProducts().getPrice() * orderDetails.getQuantity();
-//        }
-//        return amount;
-//    }
     public Orders save(Customer customer ,OrderDetails item, Payment payment, Double amount, float discount, LocalDateTime ordertime ) throws Exception {
         Orders orders =
                 Orders
