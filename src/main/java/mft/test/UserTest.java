@@ -38,7 +38,7 @@ public class UserTest {
 //
 //        System.out.println(CustomerController.getController().findById(2));
 
-//        System.out.println(OrderDetailsController.getController().findByPrice());
+        System.out.println(OrderDetailsController.getController().findAll());
 //
 //        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));
 
@@ -52,15 +52,22 @@ public class UserTest {
 //                "جنس خوب"));
 
 //       System.out.println(OrderDetailsController.getController().save(
-//                 ProductController.getController().findByName("kjhg"),
+//                 ProductController.getController().findByName("aaa"),
 //                2));
 
 //               System.out.println(OrderDetailsController.getController().save(
-//                null,
+//                42,
+//                1,
+//                21,
 //                2,
-//                300000.0,
-//                       2));
+//                       200000.0));
 
+//        System.out.println(OrderController.getController().save(
+//                42,
+//                500000000.0,
+//                200000.0F,
+//                "closed",
+//                LocalDateTime.now()));
 
 //        System.out.println(PaymentController.getController().save(
 //                100009000.0,

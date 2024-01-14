@@ -18,12 +18,11 @@ import java.util.ArrayList;
 public class Orders {
     private int id;
     private Customer customer;
-    private OrderDetails items;
     private Double amount;
     private float discount;
-    private Payment payment;
+    private String orderType;
     private LocalDateTime orderDate;
-    private OrderStatus status;
+//    private OrderStatus status;
 
     public Orders() {
         log.info("Orders Created");

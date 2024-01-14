@@ -19,15 +19,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class OrderDetailFrameController implements Initializable {
-//    @FXML
-//    private Button saveBtn, editBtn, removeBtn, searchBtn;
-//
-//    @FXML
-//    private TextField idTxt, usernameTxt, searchTxt;
 
     @FXML
-    private Label msgLbl;
-
+    private Button addBtn, removeBtn;
+//
     @FXML
     private TableView<OrderDetails> orderTbl;
 
@@ -37,6 +32,28 @@ public class OrderDetailFrameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         resetForm();
+
+//        addBtn.setOnAction((event) -> {
+//            try {
+//                OrderDetails orderDetails = OrderDetailsController.getController().save(
+//                        Integer.valueOf(custTxt.getText()),
+//                        1,
+//                        Integer.valueOf(idTxt.getText()),
+//                        Integer.valueOf(countTxt.getText()),
+//                        Double.valueOf(priceTxt.getText()));
+//                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
+//                alert.show();
+//                resetForm();
+//
+//            } catch (Exception e) {
+//                Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
+//                alert.show();
+//            }
+//        });
+
+
+
+
 
 //        removeBtn.setOnAction((event) -> {
 //            try {
@@ -52,9 +69,8 @@ public class OrderDetailFrameController implements Initializable {
 //            }
 //        });
 
-//        userTbl.setOnMouseClicked((event) -> {
-//            RadioButton radioButton = (RadioButton) activeToggleGroup.getSelectedToggle();
-//            User user = userTbl.getSelectionModel().getSelectedItem();
+//        orderTbl.setOnMouseClicked((event) -> {
+//            OrderDetails orderDetails = orderTbl.getSelectionModel().getSelectedItem();
 //
 //            idTxt.setText(String.valueOf(user.getId()));
 //            usernameTxt.setText(user.getUsername());
@@ -76,16 +92,22 @@ public class OrderDetailFrameController implements Initializable {
         TableColumn<OrderDetails, Integer> idCol = new TableColumn<>("#");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<OrderDetails, String> productNameCol = new TableColumn<>("Product Name");
-        productNameCol.setCellValueFactory(new PropertyValueFactory<>("Product_name"));
+        TableColumn<OrderDetails, Integer> customerIdCol = new TableColumn<>("Customer Id");
+        customerIdCol.setCellValueFactory(new PropertyValueFactory<>("customer"));
 
-        TableColumn<OrderDetails, String> quantityCol = new TableColumn<>("Quantity");
+//        TableColumn<OrderDetails, Integer> orderIdCol = new TableColumn<>("Order Id");
+//        orderIdCol.setCellValueFactory(new PropertyValueFactory<>("order"));
+
+        TableColumn<OrderDetails, Integer> productNameCol = new TableColumn<>("Product Id");
+        productNameCol.setCellValueFactory(new PropertyValueFactory<>("products"));
+
+        TableColumn<OrderDetails, Integer> quantityCol = new TableColumn<>("Quantity");
         quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        TableColumn<OrderDetails, Boolean> priceCol = new TableColumn<>("Price");
+        TableColumn<OrderDetails, Double> priceCol = new TableColumn<>("Price");
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        orderTbl.getColumns().addAll(idCol, productNameCol, quantityCol, priceCol);
+        orderTbl.getColumns().addAll(idCol, customerIdCol, productNameCol, quantityCol, priceCol);
         orderTbl.setItems(orderDetails);
     }
 

@@ -29,16 +29,14 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         orders.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into orders_tbl(id, customer_id, items_id, payment_id, amount, discount, orderdate) values (?, ?, ?, ?, ?, ?, ?)"
+                "insert into orders_tbl(id, customer_id, amount, discount, order_type, orderdate) values (?, ?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, orders.getId());
         preparedStatement.setInt(2, orders.getCustomer().getId());
-        preparedStatement.setInt(3, orders.getItems().getProducts().getId());
-        preparedStatement.setInt(4, orders.getPayment().getId());
-        preparedStatement.setDouble(5, orders.getAmount());
-        preparedStatement.setFloat(6, orders.getDiscount());
-        preparedStatement.setTimestamp(7, Timestamp.valueOf(orders.getOrderDate()));
-
+        preparedStatement.setDouble(3, orders.getAmount());
+        preparedStatement.setFloat(4, orders.getDiscount());
+        preparedStatement.setString(4, orders.getOrderType());
+        preparedStatement.setTimestamp(6, Timestamp.valueOf(orders.getOrderDate()));
 
         preparedStatement.execute();
         log.info("order repository");
@@ -49,15 +47,14 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public Orders edit(Orders orders) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update orders_tbl SET customer_id=?, items_id=?, payment_id=?, amount=?, discount=?, orderdate=? where id=? "
+                "update orders_tbl SET customer_id=?, amount=?, discount=?, order_type=?, orderdate=? where id=? "
         );
         preparedStatement.setInt(1, orders.getCustomer().getId());
-        preparedStatement.setInt(2, orders.getItems().getProducts().getId());
-        preparedStatement.setInt(3, orders.getPayment().getId());
-        preparedStatement.setDouble(4, orders.getAmount());
-        preparedStatement.setFloat(5, orders.getDiscount());
-        preparedStatement.setTimestamp(6, Timestamp.valueOf(orders.getOrderDate()));
-        preparedStatement.setInt(7, orders.getId());
+        preparedStatement.setDouble(2, orders.getAmount());
+        preparedStatement.setFloat(3, orders.getDiscount());
+        preparedStatement.setString(4, orders.getOrderType());
+        preparedStatement.setTimestamp(5, Timestamp.valueOf(orders.getOrderDate()));
+        preparedStatement.setInt(6, orders.getId());
 
         preparedStatement.execute();
         return orders;
@@ -79,7 +76,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public List<Orders> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT CUSTOMER_TBL FROM orders_REPORT"
+                "SELECT * FROM orders_REPORT"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -95,21 +92,8 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .name(resultSet.getString("customer_name"))
                                     .family(resultSet.getString("customer_family"))
                                     .build())
-                            .items(OrderDetails
-                                    .builder()
-                                    .id(resultSet.getInt("item_id"))
-                                    .products(Products
-                                            .builder()
-                                            .name(resultSet.getString("name"))
-                                            .price(resultSet.getDouble("price"))
-                                            .build())
-                                    .quantity(resultSet.getInt("quantity"))
-                                    .build())
-                            .payment(Payment
-                                    .builder()
-                                    .totalCost(resultSet.getDouble("totalcost"))
-                                    .build())
-                            .discount(resultSet.getInt("discount"))
+                            .amount(resultSet.getDouble("amount"))
+                            .discount(resultSet.getFloat("discount"))
                             .orderDate(resultSet.getTimestamp("orderDate").toLocalDateTime())
                             .build();
             ordersList.add(orders);
@@ -120,7 +104,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public List<Orders> findByAll(String searchText) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orders_REPORT WHERE item_id LIKE ? or customer_ID LIKE ? "
+                "SELECT * FROM orders_REPORT WHERE customer_name LIKE ? or customer_ID LIKE ? "
         );
         preparedStatement.setString(1, searchText + "%");
         preparedStatement.setString(2, searchText + "%");
@@ -138,21 +122,8 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .name(resultSet.getString("customer_name"))
                                     .family(resultSet.getString("customer_family"))
                                     .build())
-                            .items(OrderDetails
-                                    .builder()
-                                    .id(resultSet.getInt("item_id"))
-                                    .products(Products
-                                            .builder()
-                                            .name(resultSet.getString("name"))
-                                            .price(resultSet.getDouble("price"))
-                                            .build())
-                                    .quantity(resultSet.getInt("quantity"))
-                                    .build())
-                            .payment(Payment
-                                    .builder()
-                                    .totalCost(resultSet.getDouble("totalcost"))
-                                    .build())
-                            .discount(resultSet.getInt("discount"))
+                            .amount(resultSet.getDouble("amount"))
+                            .discount(resultSet.getFloat("discount"))
                             .orderDate(resultSet.getTimestamp("orderDate").toLocalDateTime())
                             .build();
             ordersList.add(orders);
@@ -183,21 +154,8 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                                     .name(resultSet.getString("customer_name"))
                                     .family(resultSet.getString("customer_family"))
                                     .build())
-                            .items(OrderDetails
-                                    .builder()
-                                    .id(resultSet.getInt("item_id"))
-                                    .products(Products
-                                            .builder()
-                                            .name(resultSet.getString("name"))
-                                            .price(resultSet.getDouble("price"))
-                                            .build())
-                                    .quantity(resultSet.getInt("quantity"))
-                                    .build())
-                            .payment(Payment
-                                    .builder()
-                                    .totalCost(resultSet.getDouble("totalcost"))
-                                    .build())
-                            .discount(resultSet.getInt("discount"))
+                            .amount(resultSet.getDouble("amount"))
+                            .discount(resultSet.getFloat("discount"))
                             .orderDate(resultSet.getTimestamp("orderDate").toLocalDateTime())
                             .build();
         }

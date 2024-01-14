@@ -12,10 +12,11 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class OrderDetails {
     private int id;
-    private Products products;
-    private double price;
-    private int quantity;
+    private Customer customer;
     private Orders order;
+    private Products products;
+    private int quantity;
+    private double price;
 
     public OrderDetails() {
         log.info("OrderDetails Created");

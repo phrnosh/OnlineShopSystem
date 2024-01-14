@@ -21,14 +21,22 @@ import java.util.ResourceBundle;
 
 public class OrderFrameController implements Initializable {
     @FXML
-    private Button backBtn;
+    private Button backBtn, homeBtn;
 
     @FXML
     private TableView<Orders> orderTbl;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+//        System.out.println(AppState.customer.getName());
+//        try {
+//            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+
+
     resetForm();
         backBtn.setOnAction ((event) -> {
             try {
@@ -48,6 +56,26 @@ public class OrderFrameController implements Initializable {
                 alert.show();
             }
         });
+
+        homeBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("مشاهده کالاها");
+                stage.show();
+                resetForm();
+                backBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
 
     }
 

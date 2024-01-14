@@ -25,13 +25,13 @@ public class SearchProductFrameController implements Initializable {
     private Button searchBtn, addBtn;
 
     @FXML
-    private TextField searchTxt, countTxt;
+    private TextField searchTxt, countTxt, custTxt;
 
     @FXML
     private Label idTxt, nameTxt, brandTxt, priceTxt, numLb;
 
     @FXML
-    private TitledPane editTp;
+    private TitledPane editTp, orderTp, orderDetailTp;
 
     @FXML
     private TableView<Products> productTbl;
@@ -39,21 +39,24 @@ public class SearchProductFrameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         resetForm();
-//        addBtn.setOnAction((event) -> {
-//            try {
-//                OrderDetails orderDetails = OrderDetailsController.getController().save(
-//                        nameTxt.getText(),
-//                        Integer.valueOf(countTxt.getText()),
-//                        Double.valueOf(priceTxt.getText()));
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
-//                alert.show();
-//                resetForm();
-//
-//            } catch (Exception e) {
-//                Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
-//                alert.show();
-//            }
-//        });
+        addBtn.setOnAction((event) -> {
+            try {
+                //todo problem in user Id
+                OrderDetails orderDetails = OrderDetailsController.getController().save(
+                        Integer.valueOf(custTxt.getText()),
+                        1,
+                        Integer.valueOf(idTxt.getText()),
+                        Integer.valueOf(countTxt.getText()),
+                        Double.valueOf(priceTxt.getText()));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
+                alert.show();
+                resetForm();
+
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
+                alert.show();
+            }
+        });
 
         productTbl.setOnMouseClicked((event) -> {
             Products products = productTbl.getSelectionModel().getSelectedItem();
@@ -106,6 +109,46 @@ public class SearchProductFrameController implements Initializable {
                 alert.show();
             }
         });
+
+        orderDetailTp.setOnMouseClicked ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("orderDetailFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("سبد کالا");
+                stage.show();
+                resetForm();
+                editTp.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+        orderTp.setOnMouseClicked ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("orderFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("سفارشات");
+                stage.show();
+                resetForm();
+                editTp.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+
 
     }
     private void showDataOnTable(List<Products> productsList) {

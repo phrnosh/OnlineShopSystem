@@ -20,24 +20,17 @@ public class OrderController {
         return controller;
     }
 
-    public Orders save(Customer customer ,OrderDetails item, Payment payment, Double amount, float discount, LocalDateTime ordertime ) throws Exception {
+    public Orders save(Integer customer, Double amount, float discount, String type, LocalDateTime ordertime) throws Exception {
         Orders orders =
                 Orders
                         .builder()
                         .customer(Customer
                                 .builder()
-                                .id(customer.getId())
-                                .build())
-                        .items(OrderDetails
-                                .builder()
-                                .products(Products.builder().id(item.getProducts().getId()).build())
-                                .build())
-                        .payment(Payment
-                                .builder()
-                                .id(payment.getId())
+                                .id(customer)
                                 .build())
                         .amount(amount)
                         .discount(discount)
+                        .orderType(type)
                         .orderDate(ordertime)
                         .build();
         OrderService.getService().save(orders);
@@ -45,38 +38,45 @@ public class OrderController {
         return orders;
     }
 //todo
-    public Orders edit(Integer id, Customer customer , OrderDetails item, Payment payment, Double amount, Float discount, LocalDateTime ordertime) throws Exception {
+    public Orders edit(Integer id, Integer customer, Double amount, float discount, String type, LocalDateTime ordertime) throws Exception {
         Orders orders =
                 Orders
                         .builder()
                         .id(id)
-                        .customer(customer)
-                        .items(item)
-                        .payment(payment)
+                        .customer(Customer
+                                .builder()
+                                .id(customer)
+                                .build())
                         .amount(amount)
                         .discount(discount)
+                        .orderType(type)
                         .orderDate(ordertime)
                         .build();
 
         OrderService.getService().edit(orders);
+        log.info("Edit");
             return orders;
 }
 
     public Orders remove(Integer id) throws Exception {
         Orders orders=OrderService.getService().findById(id);
         OrderService.getService().remove(id);
+        log.info("Remove");
         return orders;
     }
 
     public List<Orders> findAll() throws Exception {
+        log.info("findAll");
         return OrderService.getService().findAll();
     }
 
     public List<Orders> findByAll(String searchText) throws Exception {
+        log.info("findByAll");
         return OrderService.getService().findByAll(searchText);
     }
 
     public Orders findById(Integer id) throws Exception {
+        log.info("findById");
         return OrderService.getService().findById(id);
     }
 }

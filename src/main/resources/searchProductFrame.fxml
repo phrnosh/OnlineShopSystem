@@ -88,6 +88,8 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </TitledPane>
+            <TextField fx:id="custTxt" layoutX="782.0" layoutY="516.0" prefHeight="30.0" prefWidth="40.0" />
+            <Label layoutX="777.0" layoutY="499.0" text="کد مشتری" />
          </children>
       </Pane>
       <Pane layoutX="114.0" layoutY="76.0" prefHeight="583.0" prefWidth="147.0" style="-fx-background-color: white;">
@@ -97,6 +99,8 @@
                 <TitledPane fx:id="editTp" animated="false" prefHeight="26.0" prefWidth="128.0" text="ویرایش حساب کاربری" />
               </panes>
             </Accordion>
+            <TitledPane fx:id="orderTp" alignment="CENTER_RIGHT" layoutX="5.0" layoutY="34.0" prefHeight="26.0" prefWidth="138.0" text="سفارشات" />
+            <TitledPane fx:id="orderDetailTp" alignment="CENTER_RIGHT" layoutX="5.0" layoutY="60.0" prefHeight="26.0" prefWidth="138.0" text="سبد کالا" />
          </children>
       </Pane>
    </children>

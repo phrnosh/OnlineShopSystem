@@ -2,6 +2,7 @@ package mft.controller;
 
 
 import lombok.extern.log4j.Log4j;
+import mft.model.entity.Customer;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Orders;
 import mft.model.entity.Products;
@@ -20,69 +21,79 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(String products, Integer quantity, Double price, Integer invoiceId) throws Exception {
+    public OrderDetails save(Integer customer, Integer order, Integer products, Integer quantity, Double price) throws Exception {
             OrderDetails orderDetails =
                     OrderDetails
                             .builder()
-//                            .products(new Products())
+                            .customer(Customer
+                                    .builder()
+                                    .id(customer)
+                                    .build())
+                            .order(Orders
+                                    .builder()
+                                    .id(order)
+                                    .build())
                             .products(Products
                                     .builder()
-                                    .name(products)
+                                    .id(products)
                                     .build())
                             .quantity(quantity)
                             .price(price)
-                            .order(Orders
-                                    .builder()
-                                    .id(invoiceId)
-                                    .build())
                             .build();
             OrderDetailsService.getService().save(orderDetails);
         log.info("Save");
             return orderDetails;
     }
 
-    public OrderDetails edit(Integer id, Products products, Integer quantity, Double price, Integer invoiceId) throws Exception {
+    public OrderDetails edit(Integer id, Integer customer, Integer order, Integer products, Integer quantity, Double price) throws Exception {
         OrderDetails orderDetails =
                 OrderDetails
                         .builder()
                         .id(id)
-                        .products(Products
+                        .customer(Customer
                                 .builder()
-                                .id(products.getId())
-                                .build())
-                        .quantity(quantity)
-                        .products(Products
-                                .builder()
-                                .price(price)
+                                .id(customer)
                                 .build())
                         .order(Orders
                                 .builder()
-                                .id(invoiceId)
+                                .id(order)
                                 .build())
+                        .products(Products
+                                .builder()
+                                .id(products)
+                                .build())
+                        .quantity(quantity)
+                        .price(price)
                         .build();
         OrderDetailsService.getService().edit(orderDetails);
+        log.info("Edit");
             return orderDetails;
     }
 
     public OrderDetails remove(Integer id) throws Exception {
         OrderDetails orderDetails=OrderDetailsService.getService().findById(id);
         OrderDetailsService.getService().remove(id);
+        log.info("Remove");
         return orderDetails;
     }
 
     public List<OrderDetails> findAll() throws Exception {
+        log.info("findAll");
         return OrderDetailsService.getService().findAll();
     }
 
     public List<OrderDetails> findByAll(String searchText) throws Exception {
+        log.info("findByAll");
         return OrderDetailsService.getService().findByAll(searchText);
     }
 
     public OrderDetails findById(Integer id) throws Exception {
+        log.info("findById");
         return OrderDetailsService.getService().findById(id);
     }
 
-    public List<OrderDetails> findByPrice() throws Exception {
-        return OrderDetailsService.getService().findByPrice();
+    public List<OrderDetails> findSumOrder(int orderId) throws Exception {
+        log.info("findSumOrder");
+        return OrderDetailsService.getService().findSumOrder(orderId);
     }
 }

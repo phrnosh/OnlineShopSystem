@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,7 +16,7 @@
          <children>
             <Accordion layoutX="393.0" layoutY="479.0" />
             <Accordion layoutX="648.0" layoutY="479.0" />
-            <Pane layoutX="98.0" layoutY="47.0" prefHeight="278.0" prefWidth="641.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 20px 20px; -fx-border-color: #dddddd; -fx-border-radius: 20px 20px;">
+            <Pane layoutX="98.0" layoutY="32.0" prefHeight="278.0" prefWidth="641.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 20px 20px; -fx-border-color: #dddddd; -fx-border-radius: 20px 20px;">
                <children>
                   <TableView fx:id="orderTbl" layoutX="55.0" layoutY="40.0" prefHeight="219.0" prefWidth="532.0">
                      <columns>
@@ -32,7 +34,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="98.0" layoutY="365.0" prefHeight="154.0" prefWidth="641.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 20px 20px; -fx-border-color: #dddddd; -fx-border-radius: 20px 20px;">
+            <Pane layoutX="98.0" layoutY="384.0" prefHeight="154.0" prefWidth="641.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 20px 20px; -fx-border-color: #dddddd; -fx-border-radius: 20px 20px;">
                <children>
                   <TableView fx:id="paymentTbl" layoutX="55.0" layoutY="39.0" prefHeight="101.0" prefWidth="532.0">
                      <columns>
@@ -50,6 +52,30 @@
                   </Label>
                </children>
             </Pane>
+            <Button fx:id="addBtn" layoutX="98.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #803b96; -fx-background-radius: 20px 20px;" text="ثبت کالا" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="homeBtn" layoutX="762.0" layoutY="12.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: white;" text="Home" textFill="#808080">
+               <font>
+                  <Font name="System Bold Italic" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="removeBtn" layoutX="632.0" layoutY="316.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #803b96; -fx-background-radius: 20px 20px;" text="حذف کالا" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </children>
