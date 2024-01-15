@@ -101,6 +101,40 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         return ordersList;
     }
 
+
+    public List<Orders> findByCustomerId(int customerId) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM orders_tbl where customer_id=?"
+        );
+        preparedStatement.setInt(1, customerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Orders> ordersList = new ArrayList<>();
+        while (resultSet.next()) {
+            Orders orders =
+                    Orders
+                            .builder()
+                            .id(resultSet.getInt("id"))
+                            .customer(Customer
+                                    .builder()
+                                    .id(resultSet.getInt("customer_id"))
+                                    .name(resultSet.getString("customer_name"))
+                                    .family(resultSet.getString("customer_family"))
+                                    .build())
+                            .amount(resultSet.getDouble("amount"))
+                            .discount(resultSet.getFloat("discount"))
+                            .orderDate(resultSet.getTimestamp("orderDate").toLocalDateTime())
+                            .build();
+            ordersList.add(orders);
+        }
+        return ordersList;
+    }
+
+
+
+
+
+
     public List<Orders> findByAll(String searchText) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(

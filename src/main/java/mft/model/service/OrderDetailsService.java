@@ -60,6 +60,12 @@ public class OrderDetailsService {
         }
     }
 
+    public List<OrderDetails> findByCustomerId(int customerId) throws Exception {
+        try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
+            return orderDetailsRepository.findByCustomerId(customerId);
+        }
+    }
+
     public List<OrderDetails> findSumOrder(int orderId) throws Exception {
         try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
             return orderDetailsRepository.findSumOrder(orderId);

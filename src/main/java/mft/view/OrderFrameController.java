@@ -68,7 +68,7 @@ public class OrderFrameController implements Initializable {
                 stage.setTitle("مشاهده کالاها");
                 stage.show();
                 resetForm();
-                backBtn.getParent().getScene().getWindow().hide();
+                homeBtn.getParent().getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());

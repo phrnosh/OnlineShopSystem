@@ -79,4 +79,10 @@ public class OrderController {
         log.info("findById");
         return OrderService.getService().findById(id);
     }
+
+    public List<Orders> findByCustomerId(int customerId) throws Exception {
+        log.info("findByCustomerId");
+        return OrderService.getService().findByCustomerId(customerId);
+    }
+
 }

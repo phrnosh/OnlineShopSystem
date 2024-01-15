@@ -92,6 +92,11 @@ public class OrderDetailsController {
         return OrderDetailsService.getService().findById(id);
     }
 
+    public List<OrderDetails> findByCustomerId(int customerId) throws Exception {
+        log.info("findByCustomerId");
+        return OrderDetailsService.getService().findByCustomerId(customerId);
+    }
+
     public List<OrderDetails> findSumOrder(int orderId) throws Exception {
         log.info("findSumOrder");
         return OrderDetailsService.getService().findSumOrder(orderId);

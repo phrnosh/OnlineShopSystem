@@ -76,6 +76,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label fx:id="idLbl" layoutX="579.0" layoutY="323.0" prefHeight="25.0" prefWidth="34.0" visible="false" />
          </children>
       </Pane>
    </children>

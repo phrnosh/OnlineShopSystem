@@ -3,9 +3,12 @@ package mft.view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import mft.controller.OrderDetailsController;
 import mft.controller.PaymentController;
 import mft.model.entity.OrderDetails;
@@ -21,8 +24,11 @@ import java.util.ResourceBundle;
 public class OrderDetailFrameController implements Initializable {
 
     @FXML
-    private Button addBtn, removeBtn;
-//
+    private Label idLbl;
+
+    @FXML
+    private Button addBtn, removeBtn, homeBtn;
+
     @FXML
     private TableView<OrderDetails> orderTbl;
 
@@ -52,36 +58,43 @@ public class OrderDetailFrameController implements Initializable {
 //        });
 
 
+        removeBtn.setOnAction((event) -> {
+            try {
+                OrderDetails orderDetails = OrderDetailsController.getController().remove(Integer.valueOf(idLbl.getText()));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Removed");
+                alert.show();
+                resetForm();
 
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Remove Error " + e.getMessage());
+                alert.show();
+            }
+        });
 
+        orderTbl.setOnMouseClicked((event) -> {
+            OrderDetails orderDetails = orderTbl.getSelectionModel().getSelectedItem();
+            idLbl.setText(String.valueOf(orderDetails.getId()));
+        });
 
-//        removeBtn.setOnAction((event) -> {
-//            try {
-//                User user = UserController.getController().remove(Integer.valueOf(idTxt.getText()));
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION, "User Removed");
-//                alert.show();
-//                resetForm();
-//
-//            } catch (Exception e) {
-//                msgLbl.setVisible(true);
-//                Alert alert = new Alert(Alert.AlertType.ERROR, "Remove Error " + e.getMessage());
-//                alert.show();
-//            }
-//        });
+        homeBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))
+                );
 
-//        orderTbl.setOnMouseClicked((event) -> {
-//            OrderDetails orderDetails = orderTbl.getSelectionModel().getSelectedItem();
-//
-//            idTxt.setText(String.valueOf(user.getId()));
-//            usernameTxt.setText(user.getUsername());
-//            passwordTxt.setText(user.getPassword());
-//            if(user.isActive()) {
-//                enableRdo.fire();
-//            }else{
-//                disableRdo.fire();
-//            }
-//
-//        });
+                stage.setScene(scene);
+                stage.setTitle("مشاهده کالاها");
+                stage.show();
+                resetForm();
+                homeBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
     }
     private void showDataOnOrderTable(List<OrderDetails> orderDetailsList) {
 
@@ -139,7 +152,7 @@ public class OrderDetailFrameController implements Initializable {
     public void resetForm(){
         try {
             //TODO edit findAll
-            showDataOnOrderTable(OrderDetailsController.getController().findAll());
+            showDataOnOrderTable(OrderDetailsController.getController().findByCustomerId(42));
             showDataOnPaymentTable(PaymentController.getController().findAll());
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());

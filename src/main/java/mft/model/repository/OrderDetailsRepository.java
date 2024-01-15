@@ -187,12 +187,12 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         return orderDetails;
     }
 
-    public List<OrderDetails> findByPrice() throws Exception {
+    public List<OrderDetails> findByCustomerId(int customerId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT sum(price) FROM orderDetails_tbl "
+                "SELECT * FROM orderDetails_tbl where customer_id=?"
         );
-
+        preparedStatement.setInt(1, customerId);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<OrderDetails> orderDetailsList = new ArrayList<>();
         while (resultSet.next()) {
@@ -217,13 +217,43 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .build();
             orderDetailsList.add(orderDetails);
         }
-
-
-
-
-        log.info("orderDetails repository");
         return orderDetailsList;
     }
+
+
+//    public List<OrderDetails> findByPrice() throws Exception {
+//        connection = JdbcProvider.getJdbcProvider().getConnection();
+//        preparedStatement = connection.prepareStatement(
+//                "SELECT sum(price) FROM orderDetails_tbl "
+//        );
+//
+//        ResultSet resultSet = preparedStatement.executeQuery();
+//        List<OrderDetails> orderDetailsList = new ArrayList<>();
+//        while (resultSet.next()) {
+//            OrderDetails orderDetails =
+//                    OrderDetails
+//                            .builder()
+//                            .id(resultSet.getInt("id"))
+//                            .customer(Customer
+//                                    .builder()
+//                                    .id(resultSet.getInt("customer_id"))
+//                                    .build())
+//                            .order(Orders
+//                                    .builder()
+//                                    .id(resultSet.getInt("order_id"))
+//                                    .build())
+//                            .products(Products
+//                                    .builder()
+//                                    .id(resultSet.getInt("products_id"))
+//                                    .build())
+//                            .quantity(resultSet.getInt("quantity"))
+//                            .price(resultSet.getDouble("price"))
+//                            .build();
+//            orderDetailsList.add(orderDetails);
+//        }
+//        log.info("orderDetails repository");
+//        return orderDetailsList;
+//    }
 
     public List<OrderDetails> findSumOrder(int orderId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
@@ -244,6 +274,8 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         }
         return orderDetailsList;
     }
+
+
 
 
     @Override
