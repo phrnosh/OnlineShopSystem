@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import lombok.extern.log4j.Log4j;
-import mft.model.entity.enums.PaymentType;
+import mft.model.entity.enums.OrderStatus;
 
 import java.time.LocalDateTime;
 
@@ -15,9 +15,11 @@ import java.time.LocalDateTime;
 @Log4j
 public class Payment {
     private int id;
+    private Customer customer;
     private Double totalCost;
-    private String PaymentType;
     private String PaymentDetails;
+    private String PaymentType;
+    private OrderStatus orderType;
     private LocalDateTime PaymentTimeStamp;
 
     public Payment() {

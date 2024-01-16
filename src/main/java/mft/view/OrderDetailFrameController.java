@@ -12,14 +12,13 @@ import javafx.stage.Stage;
 import mft.controller.OrderController;
 import mft.controller.OrderDetailsController;
 import mft.controller.PaymentController;
+import mft.model.entity.AppState;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Orders;
 import mft.model.entity.Payment;
 import mft.model.entity.enums.OrderStatus;
-import mft.model.entity.enums.PaymentType;
 
 import java.net.URL;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,13 +39,21 @@ public class OrderDetailFrameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        System.out.println(AppState.customer.getName());
+        try {
+            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         resetForm();
 
         addBtn.setOnAction((event) -> {
             try {
                 Orders orders = OrderController.getController().save(
-                        42,
-                        OrderDetailsController.getController().findSumOrder(42).getPrice(),
+                        AppState.customer.getId(),
+                        OrderDetailsController.getController().findSumOrder(AppState.customer.getId()).getPrice(),
                         200000,
                         OrderStatus.New,
                         LocalDateTime.now());
@@ -147,27 +154,33 @@ public class OrderDetailFrameController implements Initializable {
         TableColumn<Payment, Integer> idCol = new TableColumn<>("#");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
+        TableColumn<Payment, Integer> customerIdCol = new TableColumn<>("Customer Id");
+        customerIdCol.setCellValueFactory(new PropertyValueFactory<>("customer"));
+
         TableColumn<Payment, Double> totalCostCol = new TableColumn<>("Total Cost");
         totalCostCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
 
         TableColumn<Payment, String> paymentDetailsCol = new TableColumn<>(" Payment Details");
         paymentDetailsCol.setCellValueFactory(new PropertyValueFactory<>("paymentDetails"));
 
-        TableColumn<Payment, PaymentType> typeCol = new TableColumn<>("Payment Type");
+        TableColumn<Payment, String> typeCol = new TableColumn<>("Payment Type");
         typeCol.setCellValueFactory(new PropertyValueFactory<>("PaymentType"));
+
+        TableColumn<Payment, String> statusCol = new TableColumn<>("Status");
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
 
         TableColumn<Payment, LocalDateTime> paymentDateCol = new TableColumn<>("Payment Date");
         paymentDateCol.setCellValueFactory(new PropertyValueFactory<>("PaymentTimeStamp"));
 
-        paymentTbl.getColumns().addAll(idCol, totalCostCol, paymentDetailsCol, typeCol, paymentDateCol);
+        paymentTbl.getColumns().addAll(idCol, customerIdCol, totalCostCol, paymentDetailsCol, typeCol, statusCol, paymentDateCol);
         paymentTbl.setItems(payments);
     }
 
     public void resetForm(){
         try {
             //TODO edit findAll
-            showDataOnOrderTable(OrderDetailsController.getController().findByCustomerId(42));
-            showDataOnPaymentTable(PaymentController.getController().findAll());
+            showDataOnOrderTable(OrderDetailsController.getController().findByCustomerId(AppState.customer.getId()));
+            showDataOnPaymentTable(PaymentController.getController().findByCustomerId(AppState.customer.getId()));
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());
             alert.show();

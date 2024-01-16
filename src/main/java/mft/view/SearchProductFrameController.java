@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import mft.controller.OrderController;
 import mft.controller.OrderDetailsController;
 import mft.controller.ProductController;
+import mft.model.entity.AppState;
 import mft.model.entity.Customer;
 import mft.model.entity.OrderDetails;
 import mft.model.entity.Products;
@@ -38,13 +40,20 @@ public class SearchProductFrameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        System.out.println(AppState.customer.getName());
+        try {
+            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         resetForm();
         addBtn.setOnAction((event) -> {
             try {
                 //todo problem in user Id
                 OrderDetails orderDetails = OrderDetailsController.getController().save(
-                        Integer.valueOf(custTxt.getText()),
-                        1,
+                        AppState.customer.getId(),
                         Integer.valueOf(idTxt.getText()),
                         Integer.valueOf(countTxt.getText()),
                         Double.valueOf(priceTxt.getText()));

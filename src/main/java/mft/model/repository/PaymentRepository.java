@@ -1,10 +1,10 @@
 package mft.model.repository;
 
 import lombok.extern.log4j.Log4j;
-import mft.model.entity.OrderDetails;
+import mft.model.entity.Customer;
+import mft.model.entity.Orders;
 import mft.model.entity.Payment;
-import mft.model.entity.Products;
-import mft.model.entity.enums.PaymentType;
+import mft.model.entity.enums.OrderStatus;
 import mft.model.repository.impl.Da;
 import mft.model.tools.JdbcProvider;
 
@@ -32,13 +32,15 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         payment.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into payment_tbl(id, totalcost, paymentdetails, type, paymentdate) values (?, ?, ?, ?, ?)"
+                "insert into payment_tbl(id, customer_id, totalcost, paymentdetails, type, order_type, paymentdate) values (?, ?, ?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, payment.getId());
-        preparedStatement.setDouble(2, payment.getTotalCost());
-        preparedStatement.setString(3, payment.getPaymentDetails());
-        preparedStatement.setString(4, payment.getPaymentType());
-        preparedStatement.setTimestamp(5, Timestamp.valueOf(payment.getPaymentTimeStamp()));
+        preparedStatement.setInt(2, payment.getCustomer().getId());
+        preparedStatement.setDouble(3, payment.getTotalCost());
+        preparedStatement.setString(4, payment.getPaymentDetails());
+        preparedStatement.setString(5, payment.getPaymentType());
+        preparedStatement.setString(6, String.valueOf(payment.getOrderType()));
+        preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentTimeStamp()));
 
         preparedStatement.execute();
         log.info("payment repository");
@@ -49,14 +51,16 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public Payment edit(Payment payment) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update payment_tbl SET totalcost=?, paymentdetails=?, type=?, paymentdate=? where id=? "
+                "update payment_tbl SET customer_id=?, totalcost=?, paymentdetails=?, type=?, order_type=?, paymentdate=? where id=? "
         );
 
         preparedStatement.setDouble(1, payment.getTotalCost());
-        preparedStatement.setString(2, payment.getPaymentDetails());
-        preparedStatement.setString(3, payment.getPaymentType());
-        preparedStatement.setTimestamp(4, Timestamp.valueOf(payment.getPaymentTimeStamp()));
-        preparedStatement.setInt(5, payment.getId());
+        preparedStatement.setInt(2, payment.getCustomer().getId());
+        preparedStatement.setString(3, payment.getPaymentDetails());
+        preparedStatement.setString(4, payment.getPaymentType());
+        preparedStatement.setString(5, String.valueOf(payment.getOrderType()));
+        preparedStatement.setTimestamp(6, Timestamp.valueOf(payment.getPaymentTimeStamp()));
+        preparedStatement.setInt(7, payment.getId());
 
         preparedStatement.execute();
         return payment;
@@ -88,9 +92,14 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                     Payment
                             .builder()
                             .id(resultSet.getInt("id"))
+                            .customer(Customer
+                                    .builder()
+                                    .id(resultSet.getInt("customer_id"))
+                                    .build())
                             .totalCost(resultSet.getDouble("totalCost"))
                             .PaymentDetails(resultSet.getString("paymentDetails"))
                             .PaymentType(resultSet.getString("type"))
+                            .orderType(OrderStatus.valueOf(resultSet.getString("order_type")))
                             .PaymentTimeStamp(resultSet.getTimestamp("paymentDate").toLocalDateTime())
 
                             .build();
@@ -141,13 +150,46 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                     Payment
                             .builder()
                             .id(resultSet.getInt("id"))
+                            .customer(Customer
+                                    .builder()
+                                    .id(resultSet.getInt("customer_id"))
+                                    .build())
                             .totalCost(resultSet.getDouble("totalCost"))
                             .PaymentDetails(resultSet.getString("PaymentDetails"))
                             .PaymentType(resultSet.getString("Type"))
+                            .orderType(OrderStatus.valueOf(resultSet.getString("order_type")))
                             .PaymentTimeStamp(resultSet.getTimestamp("PaymentDate").toLocalDateTime())
                             .build();
         }
         return payment;
+    }
+
+    public List<Payment> findByCustomerId(int customerId) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM payment_tbl where customer_id=?"
+        );
+        preparedStatement.setInt(1, customerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Payment> paymentList = new ArrayList<>();
+        while (resultSet.next()) {
+            Payment payment =
+                    Payment
+                            .builder()
+                            .id(resultSet.getInt("id"))
+                            .customer(Customer
+                                    .builder()
+                                    .id(resultSet.getInt("customer_id"))
+                                    .build())
+                            .totalCost(resultSet.getDouble("totalCost"))
+                            .PaymentDetails(resultSet.getString("PaymentDetails"))
+                            .PaymentType(resultSet.getString("Type"))
+                            .orderType(OrderStatus.valueOf(resultSet.getString("order_type")))
+                            .PaymentTimeStamp(resultSet.getTimestamp("PaymentDate").toLocalDateTime())
+                            .build();
+            paymentList.add(payment);
+        }
+        return paymentList;
     }
 
     @Override

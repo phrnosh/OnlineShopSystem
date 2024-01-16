@@ -21,17 +21,13 @@ public class OrderDetailsController {
         return controller;
     }
 
-    public OrderDetails save(Integer customer, Integer order, Integer products, Integer quantity, Double price) throws Exception {
+    public OrderDetails save(Integer customer, Integer products, Integer quantity, Double price) throws Exception {
             OrderDetails orderDetails =
                     OrderDetails
                             .builder()
                             .customer(Customer
                                     .builder()
                                     .id(customer)
-                                    .build())
-                            .order(Orders
-                                    .builder()
-                                    .id(order)
                                     .build())
                             .products(Products
                                     .builder()
@@ -45,7 +41,7 @@ public class OrderDetailsController {
             return orderDetails;
     }
 
-    public OrderDetails edit(Integer id, Integer customer, Integer order, Integer products, Integer quantity, Double price) throws Exception {
+    public OrderDetails edit(Integer id, Integer customer, Integer products, Integer quantity, Double price) throws Exception {
         OrderDetails orderDetails =
                 OrderDetails
                         .builder()
@@ -53,10 +49,6 @@ public class OrderDetailsController {
                         .customer(Customer
                                 .builder()
                                 .id(customer)
-                                .build())
-                        .order(Orders
-                                .builder()
-                                .id(order)
                                 .build())
                         .products(Products
                                 .builder()

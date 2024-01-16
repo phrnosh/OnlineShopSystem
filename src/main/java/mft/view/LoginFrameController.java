@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import mft.controller.CustomerController;
+import mft.model.entity.AppState;
 import mft.model.entity.Customer;
 
 import java.net.URL;
@@ -34,6 +35,9 @@ public class LoginFrameController implements Initializable {
                         usernameTxt.getText(),
                         passwordTxt.getText()
                 );
+
+                AppState.customer = customer;
+
                 Stage stage = new Stage();
                 Scene scene = new Scene(
                         FXMLLoader.load(getClass().getClassLoader().getResource("searchProductFrame.fxml"))

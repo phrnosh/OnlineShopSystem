@@ -1,12 +1,6 @@
 package mft.test;
 
 import lombok.extern.log4j.Log4j;
-import mft.controller.*;
-import mft.model.entity.*;
-import mft.model.entity.enums.OrderStatus;
-import mft.model.entity.enums.PaymentType;
-
-import java.time.LocalDateTime;
 
 @Log4j
 public class UserTest {
@@ -43,7 +37,7 @@ public class UserTest {
 //
 //        System.out.println(OrderController.getController().findByCustomerId(42));
 
-          System.out.println(PaymentController.getController().findAll());
+//          System.out.println(PaymentController.getController().findAll());
 
 
 //        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));

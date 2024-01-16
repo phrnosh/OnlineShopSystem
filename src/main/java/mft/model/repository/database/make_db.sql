@@ -9,8 +9,8 @@ create table customer_tbl
     address nvarchar2(100),
     phoneNumber nchar(15) UNIQUE,
     email nvarchar2(50),
-    status   number(1),
-    role nvarchar2(10)
+    status  number(1)
+--     role nvarchar2(10)
 );
 create sequence customer_seq start with 2 increment by 1;
 
@@ -29,7 +29,7 @@ create table orderDetails_tbl
 (
     id number primary key ,
     customer_id references customer_tbl,
-    order_id references orders_tbl,
+--     order_id references orders_tbl,
     products_id references product_tbl,
     quantity number(10),
     price number(20)
@@ -39,9 +39,11 @@ create sequence orderDetails_seq start with 1 increment by 1;
 create table payment_tbl
 (
     id number primary key ,
+    customer_id references customer_tbl,
     totalcost  number(20),
     paymentdetails nvarchar2(50),
-    type nvarchar2(20),
+    type nvarchar2(20) not null ,
+    order_type nvarchar2(10),
     paymentdate timestamp
 );
 create sequence payment_seq start with 1 increment by 1;
@@ -68,6 +70,19 @@ select O.ID    as order_id,
 from orders_tbl O,
      customer_tbl C
 where O.customer_id = C.ID;
+
+
+create view payment_report as
+select P.ID    as payment_id,
+       C.ID   as customer_id,
+       C.NAME   as customer_name,
+       C.FAMILY as customer_family,
+       P.totalcost as total_cost,
+       P.paymentdate as payment_date
+from payment_tbl P,
+     customer_tbl C
+where P.customer_id = C.ID;
+
 
 create table log_tbl
 (

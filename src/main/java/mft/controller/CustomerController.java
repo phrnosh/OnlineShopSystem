@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 @Log4j
 public class CustomerController {
-    //    private static Logger logger = Logger.getLogger(PersonService.class);
     private static CustomerController controller=new CustomerController();
 
     private CustomerController() {

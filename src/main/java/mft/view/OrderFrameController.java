@@ -1,7 +1,5 @@
 package mft.view;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,19 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import mft.controller.OrderController;
-import mft.controller.OrderDetailsController;
 import mft.controller.PaymentController;
-import mft.model.entity.OrderDetails;
+import mft.model.entity.AppState;
 import mft.model.entity.Orders;
 import mft.model.entity.Payment;
 import mft.model.entity.enums.OrderStatus;
-import mft.model.entity.enums.PaymentType;
 
-import javax.swing.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,21 +39,23 @@ public class OrderFrameController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-//        System.out.println(AppState.customer.getName());
-//        try {
-//            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+        System.out.println(AppState.customer.getName());
+        try {
+            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     resetForm();
 
         addBtn.setOnAction((event) -> {
             try {
                 Payment payment = PaymentController.getController().save(
-                        OrderController.getController().findAmountOrder(42).getAmount(),
+                        AppState.customer.getId(),
+                        OrderController.getController().findAmountOrder(AppState.customer.getId()).getAmount(),
                         "تشکر از خرید شما",
                         payLbl.getText(),
+                        OrderStatus.Closed,
                         LocalDateTime.now());
 
                 resetForm();
@@ -169,7 +164,7 @@ public class OrderFrameController implements Initializable {
 
     public void resetForm(){
         try {
-            showDataOnTable(OrderController.getController().findByCustomerId(42));
+            showDataOnTable(OrderController.getController().findByCustomerId(AppState.customer.getId()));
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());
             alert.show();

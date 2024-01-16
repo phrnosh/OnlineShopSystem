@@ -33,14 +33,14 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         orderDetails.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into orderDetails_tbl(id, customer_id, order_id, products_id, quantity, price) values (?, ?, ?, ?, ?, ?)"
+                "insert into orderDetails_tbl(id, customer_id, products_id, quantity, price) values (?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, orderDetails.getId());
         preparedStatement.setInt(2, orderDetails.getCustomer().getId());
-        preparedStatement.setInt(3, orderDetails.getOrder().getId());
-        preparedStatement.setInt(4, orderDetails.getProducts().getId());
-        preparedStatement.setInt(5, orderDetails.getQuantity());
-        preparedStatement.setDouble(6, orderDetails.getPrice());
+//        preparedStatement.setInt(3, orderDetails.getOrder().getId());
+        preparedStatement.setInt(3, orderDetails.getProducts().getId());
+        preparedStatement.setInt(4, orderDetails.getQuantity());
+        preparedStatement.setDouble(5, orderDetails.getPrice());
 
         preparedStatement.execute();
         log.info("orderDetails repository");
@@ -51,14 +51,14 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public OrderDetails edit(OrderDetails orderDetails) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update orderDetails_tbl SET customer_id=?, order_id=?, products_id=?, quantity=?, price=? where id=? "
+                "update orderDetails_tbl SET customer_id=?, products_id=?, quantity=?, price=? where id=? "
         );
         preparedStatement.setInt(1, orderDetails.getCustomer().getId());
-        preparedStatement.setInt(2, orderDetails.getOrder().getId());
-        preparedStatement.setInt(3, orderDetails.getProducts().getId());
-        preparedStatement.setInt(4, orderDetails.getQuantity());
-        preparedStatement.setDouble(5, orderDetails.getPrice());
-        preparedStatement.setInt(6, orderDetails.getId());
+//        preparedStatement.setInt(2, orderDetails.getOrder().getId());
+        preparedStatement.setInt(2, orderDetails.getProducts().getId());
+        preparedStatement.setInt(3, orderDetails.getQuantity());
+        preparedStatement.setDouble(4, orderDetails.getPrice());
+        preparedStatement.setInt(5, orderDetails.getId());
 
 
         preparedStatement.execute();
@@ -97,10 +97,6 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
                                     .build())
-                            .order(Orders
-                                    .builder()
-                                    .id(resultSet.getInt("order_id"))
-                                    .build())
                             .products(Products
                                     .builder()
                                     .id(resultSet.getInt("products_id"))
@@ -132,10 +128,6 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .customer(Customer
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
-                                    .build())
-                            .order(Orders
-                                    .builder()
-                                    .id(resultSet.getInt("order_id"))
                                     .build())
                             .products(Products
                                     .builder()
@@ -171,10 +163,6 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
                                     .build())
-                            .order(Orders
-                                    .builder()
-                                    .id(resultSet.getInt("order_id"))
-                                    .build())
                             .products(Products
                                     .builder()
                                     .id(resultSet.getInt("products_id"))
@@ -204,10 +192,6 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
                                     .build())
-                            .order(Orders
-                                    .builder()
-                                    .id(resultSet.getInt("order_id"))
-                                    .build())
                             .products(Products
                                     .builder()
                                     .id(resultSet.getInt("products_id"))
@@ -225,7 +209,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         preparedStatement = connection.prepareStatement(
                 "SELECT sum(quantity * price) as price FROM orderDetails_tbl where customer_id =?"
         );
-        preparedStatement.setInt(1,customerId);
+        preparedStatement.setInt(1, customerId);
 //todo
         preparedStatement.execute();
         ResultSet resultSet = preparedStatement.executeQuery();

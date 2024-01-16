@@ -1,7 +1,9 @@
 package mft.model.service;
 
 import lombok.extern.log4j.Log4j;
+import mft.model.entity.OrderDetails;
 import mft.model.entity.Payment;
+import mft.model.repository.OrderDetailsRepository;
 import mft.model.repository.PaymentRepository;
 
 import java.util.List;
@@ -56,6 +58,12 @@ public class PaymentService {
     public Payment findById(int id) throws Exception {
         try (PaymentRepository paymentRepository = new PaymentRepository()) {
             return paymentRepository.findById(id);
+        }
+    }
+
+    public List<Payment> findByCustomerId(int customerId) throws Exception {
+        try (PaymentRepository paymentRepository = new PaymentRepository()) {
+            return paymentRepository.findByCustomerId(customerId);
         }
     }
 }
