@@ -20,7 +20,7 @@ public class LoginFrameController implements Initializable {
     private PasswordField passwordTxt;
 
     @FXML
-    private Button loginBtn, signBtn;
+    private Button loginBtn, signBtn, adminBtn;
 
     @FXML
     private Label msgLbl;
@@ -30,19 +30,6 @@ public class LoginFrameController implements Initializable {
         resetForm();
         loginBtn.setOnAction ((event) -> {
             try {
-//                if (equals(true)){
-//                    Stage stage = new Stage();
-//                    Scene scene = new Scene(
-//                            FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
-//                    );
-//                    stage.setScene(scene);
-//                    stage.setTitle("دسترسی ادمین به بخش کالاها");
-//                    stage.show();
-//                    resetForm();
-//                    loginBtn.getParent().getScene().getWindow().hide();
-//
-//                }
-
                 Customer customer = (Customer) CustomerController.getController().findByUsernameAndPassword(
                         usernameTxt.getText(),
                         passwordTxt.getText()
@@ -63,26 +50,29 @@ public class LoginFrameController implements Initializable {
                 alert.show();
             }
         });
-//        loginBtn.setOnAction ((event) -> {
-//            try {
-//                  usernameTxt.setText("admin");
-//                  passwordTxt.setText("admin");
-//                Stage stage = new Stage();
-//                Scene scene = new Scene(
-//                        FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
-//                );
-//                stage.setScene(scene);
-//                stage.setTitle("دسترسی ادمین به بخش کالاها");
-//                stage.show();
-//                resetForm();
-//                loginBtn.getParent().getScene().getWindow().hide();
-//
-//            } catch (Exception e) {
-//                msgLbl.setVisible(true);
-//                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
-//                alert.show();
-//            }
-//        });
+
+        adminBtn.setOnAction ((event) -> {
+            try {
+                if (usernameTxt.getText().equals("admin") && passwordTxt.getText().equals("admin")) {
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(
+                            FXMLLoader.load(getClass().getClassLoader().getResource("ProductFrame.fxml"))
+                    );
+                    stage.setScene(scene);
+                    stage.setTitle("دسترسی ادمین به بخش کالاها");
+                    stage.show();
+                    resetForm();
+                    adminBtn.getParent().getScene().getWindow().hide();
+                }else {
+                    msgLbl.setVisible(true);
+                }
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+
         signBtn.setOnAction ((event) -> {
             try {
                 Stage stage = new Stage();
@@ -103,12 +93,6 @@ public class LoginFrameController implements Initializable {
             }
         });
     }
-
-//    private boolean equals(boolean obj) {
-//        usernameTxt.setText("admin");
-//        passwordTxt.setText("admin");
-//        return obj;
-//    }
 
     public void resetForm() {
         try {

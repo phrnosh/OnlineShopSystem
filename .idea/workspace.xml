@@ -8,14 +8,31 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/LoginFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/LoginFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/OrderFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrderFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/orderDetailFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/orderDetailFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/orderDetailFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/orderDetailFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/SigninFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/SigninFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/customerFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/customerFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/loginFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/loginFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/orderFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/orderFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/searchProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/searchProductFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProductFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/customerFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/customerFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/loginFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/loginFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/orderFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/orderFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/searchProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/searchProductFrame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +197,8 @@
       <workItem from="1705084360395" duration="1382000" />
       <workItem from="1705122883660" duration="17305000" />
       <workItem from="1705238372560" duration="10699000" />
-      <workItem from="1705330865981" duration="7516000" />
+      <workItem from="1705330865981" duration="13557000" />
+      <workItem from="1705388764581" duration="20282000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -286,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705264118796</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changes">
+      <option name="closed" value="true" />
+      <created>1705350643050</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1705350643050</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

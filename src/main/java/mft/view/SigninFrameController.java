@@ -51,16 +51,6 @@ public class SigninFrameController implements Initializable {
                         phoneTxt.getText(),
                         emailTxt.getText(),
                         (radioButton.getText().equals("Enable") ? true : false));
-//
-//                Stage stage = new Stage();
-//                Scene scene = new Scene(
-//                        FXMLLoader.load(getClass().getResource("loginFrame.fxml"))
-//                );
-//
-//                stage.setScene(scene);
-//                stage.setTitle("Login");
-//                stage.show();
-//                saveBtn.getParent().getScene().getWindow().hide();
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "User Saved");
                 alert.show();
@@ -84,7 +74,7 @@ public class SigninFrameController implements Initializable {
                 );
 
                 stage.setScene(scene);
-                stage.setTitle("Register Information");
+                stage.setTitle("Log in");
                 stage.show();
                 resetForm();
                 logBtn.getParent().getScene().getWindow().hide();

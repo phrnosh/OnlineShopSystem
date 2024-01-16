@@ -17,7 +17,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Button fx:id="searchBtn" layoutX="1004.0" layoutY="27.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #bbe577; -fx-background-radius: 5px 5px;" text="جستجو" textFill="#496f44">
+      <Button fx:id="searchBtn" layoutX="1004.0" layoutY="27.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #30a0c2; -fx-background-radius: 5px 5px;" text="جستجو" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>

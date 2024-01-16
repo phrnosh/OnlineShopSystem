@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class Payment {
     private int id;
     private Double totalCost;
-    private PaymentType PaymentType;
+    private String PaymentType;
     private String PaymentDetails;
     private LocalDateTime PaymentTimeStamp;
 

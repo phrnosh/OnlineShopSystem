@@ -37,7 +37,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         preparedStatement.setInt(1, payment.getId());
         preparedStatement.setDouble(2, payment.getTotalCost());
         preparedStatement.setString(3, payment.getPaymentDetails());
-        preparedStatement.setString(4, payment.getPaymentType().name());
+        preparedStatement.setString(4, payment.getPaymentType());
         preparedStatement.setTimestamp(5, Timestamp.valueOf(payment.getPaymentTimeStamp()));
 
         preparedStatement.execute();
@@ -54,7 +54,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
 
         preparedStatement.setDouble(1, payment.getTotalCost());
         preparedStatement.setString(2, payment.getPaymentDetails());
-        preparedStatement.setString(3, payment.getPaymentType().name());
+        preparedStatement.setString(3, payment.getPaymentType());
         preparedStatement.setTimestamp(4, Timestamp.valueOf(payment.getPaymentTimeStamp()));
         preparedStatement.setInt(5, payment.getId());
 
@@ -90,7 +90,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .totalCost(resultSet.getDouble("totalCost"))
                             .PaymentDetails(resultSet.getString("paymentDetails"))
-                            .PaymentType(PaymentType.valueOf(resultSet.getString("type")))
+                            .PaymentType(resultSet.getString("type"))
                             .PaymentTimeStamp(resultSet.getTimestamp("paymentDate").toLocalDateTime())
 
                             .build();
@@ -143,7 +143,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .id(resultSet.getInt("id"))
                             .totalCost(resultSet.getDouble("totalCost"))
                             .PaymentDetails(resultSet.getString("PaymentDetails"))
-                            .PaymentType(PaymentType.valueOf(resultSet.getString("Type")))
+                            .PaymentType(resultSet.getString("Type"))
                             .PaymentTimeStamp(resultSet.getTimestamp("PaymentDate").toLocalDateTime())
                             .build();
         }

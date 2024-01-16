@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class ProductFrameController implements Initializable {
 
     @FXML
-    private Button saveBtn, editBtn, removeBtn, customerBtn;
+    private Button saveBtn, editBtn, removeBtn, customerBtn, exitBtn;
 
     @FXML
     private TextField idTxt, nameTxt, brandTxt, sizeTxt, priceTxt, searchTxt ;
@@ -121,6 +121,25 @@ public class ProductFrameController implements Initializable {
                 stage.show();
                 resetForm();
                 customerBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+        exitBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("loginFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("Log in");
+                stage.show();
+                resetForm();
+                exitBtn.getParent().getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());

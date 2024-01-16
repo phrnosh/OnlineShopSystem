@@ -3,6 +3,7 @@ package mft.test;
 import lombok.extern.log4j.Log4j;
 import mft.controller.*;
 import mft.model.entity.*;
+import mft.model.entity.enums.OrderStatus;
 import mft.model.entity.enums.PaymentType;
 
 import java.time.LocalDateTime;
@@ -38,8 +39,13 @@ public class UserTest {
 //
 //        System.out.println(CustomerController.getController().findById(2));
 
-        System.out.println(OrderDetailsController.getController().findAll());
+//        System.out.println(OrderDetailsController.getController().findByCustomerId(42));
 //
+//        System.out.println(OrderController.getController().findByCustomerId(42));
+
+          System.out.println(PaymentController.getController().findAll());
+
+
 //        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));
 
 //
@@ -63,10 +69,10 @@ public class UserTest {
 //                       200000.0));
 
 //        System.out.println(OrderController.getController().save(
-//                42,
+//                41,
 //                500000000.0,
 //                200000.0F,
-//                "closed",
+//                null,
 //                LocalDateTime.now()));
 
 //        System.out.println(PaymentController.getController().save(

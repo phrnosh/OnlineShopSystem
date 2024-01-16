@@ -97,8 +97,9 @@ public class OrderDetailsController {
         return OrderDetailsService.getService().findByCustomerId(customerId);
     }
 
-    public List<OrderDetails> findSumOrder(int orderId) throws Exception {
+    public OrderDetails findSumOrder(int customerId) throws Exception {
         log.info("findSumOrder");
-        return OrderDetailsService.getService().findSumOrder(orderId);
+        return OrderDetailsService.getService().findSumOrder(customerId);
     }
+
 }

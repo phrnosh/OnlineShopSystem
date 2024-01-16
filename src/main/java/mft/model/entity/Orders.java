@@ -20,7 +20,7 @@ public class Orders {
     private Customer customer;
     private Double amount;
     private float discount;
-    private String orderType;
+    private OrderStatus orderType;
     private LocalDateTime orderDate;
 //    private OrderStatus status;
 

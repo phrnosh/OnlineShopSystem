@@ -18,7 +18,7 @@ public class PaymentController {
         return controller;
     }
 
-    public Payment save(Double totalcost, String paymentdetails, PaymentType type, LocalDateTime paymentdate) throws Exception {
+    public Payment save(Double totalcost, String paymentdetails, String type, LocalDateTime paymentdate) throws Exception {
         Payment payment =
                 Payment
                         .builder()
@@ -32,7 +32,7 @@ public class PaymentController {
         return payment;
     }
 
-    public Payment edit(Integer id, Double totalcost, String paymentdetails, PaymentType type, LocalDateTime paymentdate) throws Exception {
+    public Payment edit(Integer id, Double totalcost, String paymentdetails, String type, LocalDateTime paymentdate) throws Exception {
         Payment payment =
                 Payment
                         .builder()

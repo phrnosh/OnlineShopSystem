@@ -9,10 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import mft.controller.OrderController;
 import mft.controller.OrderDetailsController;
 import mft.controller.PaymentController;
 import mft.model.entity.OrderDetails;
+import mft.model.entity.Orders;
 import mft.model.entity.Payment;
+import mft.model.entity.enums.OrderStatus;
 import mft.model.entity.enums.PaymentType;
 
 import java.net.URL;
@@ -39,23 +42,34 @@ public class OrderDetailFrameController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         resetForm();
 
-//        addBtn.setOnAction((event) -> {
-//            try {
-//                OrderDetails orderDetails = OrderDetailsController.getController().save(
-//                        Integer.valueOf(custTxt.getText()),
-//                        1,
-//                        Integer.valueOf(idTxt.getText()),
-//                        Integer.valueOf(countTxt.getText()),
-//                        Double.valueOf(priceTxt.getText()));
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
-//                alert.show();
-//                resetForm();
-//
-//            } catch (Exception e) {
-//                Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
-//                alert.show();
-//            }
-//        });
+        addBtn.setOnAction((event) -> {
+            try {
+                Orders orders = OrderController.getController().save(
+                        42,
+                        OrderDetailsController.getController().findSumOrder(42).getPrice(),
+                        200000,
+                        OrderStatus.New,
+                        LocalDateTime.now());
+
+                resetForm();
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("orderFrame.fxml"))
+                );
+                stage.setScene(scene);
+                stage.setTitle("سفارشات");
+                stage.show();
+                resetForm();
+                homeBtn.getParent().getScene().getWindow().hide();
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
+                alert.show();
+
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
+                alert.show();
+            }
+        });
 
 
         removeBtn.setOnAction((event) -> {
@@ -140,10 +154,10 @@ public class OrderDetailFrameController implements Initializable {
         paymentDetailsCol.setCellValueFactory(new PropertyValueFactory<>("paymentDetails"));
 
         TableColumn<Payment, PaymentType> typeCol = new TableColumn<>("Payment Type");
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        typeCol.setCellValueFactory(new PropertyValueFactory<>("PaymentType"));
 
         TableColumn<Payment, LocalDateTime> paymentDateCol = new TableColumn<>("Payment Date");
-        paymentDateCol.setCellValueFactory(new PropertyValueFactory<>("paymentDate"));
+        paymentDateCol.setCellValueFactory(new PropertyValueFactory<>("PaymentTimeStamp"));
 
         paymentTbl.getColumns().addAll(idCol, totalCostCol, paymentDetailsCol, typeCol, paymentDateCol);
         paymentTbl.setItems(payments);

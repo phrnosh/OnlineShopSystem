@@ -2,6 +2,7 @@ package mft.controller;
 
 import lombok.extern.log4j.Log4j;
 import mft.model.entity.*;
+import mft.model.entity.enums.OrderStatus;
 import mft.model.service.OrderDetailsService;
 import mft.model.service.OrderService;
 
@@ -20,7 +21,7 @@ public class OrderController {
         return controller;
     }
 
-    public Orders save(Integer customer, Double amount, float discount, String type, LocalDateTime ordertime) throws Exception {
+    public Orders save(Integer customer, Double amount, float discount, OrderStatus type, LocalDateTime ordertime) throws Exception {
         Orders orders =
                 Orders
                         .builder()
@@ -38,7 +39,7 @@ public class OrderController {
         return orders;
     }
 //todo
-    public Orders edit(Integer id, Integer customer, Double amount, float discount, String type, LocalDateTime ordertime) throws Exception {
+    public Orders edit(Integer id, Integer customer, Double amount, float discount, OrderStatus type, LocalDateTime ordertime) throws Exception {
         Orders orders =
                 Orders
                         .builder()
@@ -83,6 +84,11 @@ public class OrderController {
     public List<Orders> findByCustomerId(int customerId) throws Exception {
         log.info("findByCustomerId");
         return OrderService.getService().findByCustomerId(customerId);
+    }
+
+    public Orders findAmountOrder(Integer customerId) throws Exception {
+        log.info("findAmountOrder");
+        return OrderService.getService().findAmountOrder(customerId);
     }
 
 }

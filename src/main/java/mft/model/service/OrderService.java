@@ -63,4 +63,10 @@ public class OrderService {
             return ordersRepository.findByCustomerId(customerId);
         }
     }
+
+    public Orders findAmountOrder(int customerId) throws Exception {
+        try (OrdersRepository ordersRepository = new OrdersRepository()) {
+            return ordersRepository.findAmountOrder(customerId);
+        }
+    }
 }

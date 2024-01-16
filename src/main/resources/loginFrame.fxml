@@ -58,6 +58,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="adminBtn" layoutX="406.0" layoutY="288.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: #30a0c2;" text="ورود ادمین" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </children>

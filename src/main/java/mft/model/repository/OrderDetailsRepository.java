@@ -220,63 +220,26 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         return orderDetailsList;
     }
 
-
-//    public List<OrderDetails> findByPrice() throws Exception {
-//        connection = JdbcProvider.getJdbcProvider().getConnection();
-//        preparedStatement = connection.prepareStatement(
-//                "SELECT sum(price) FROM orderDetails_tbl "
-//        );
-//
-//        ResultSet resultSet = preparedStatement.executeQuery();
-//        List<OrderDetails> orderDetailsList = new ArrayList<>();
-//        while (resultSet.next()) {
-//            OrderDetails orderDetails =
-//                    OrderDetails
-//                            .builder()
-//                            .id(resultSet.getInt("id"))
-//                            .customer(Customer
-//                                    .builder()
-//                                    .id(resultSet.getInt("customer_id"))
-//                                    .build())
-//                            .order(Orders
-//                                    .builder()
-//                                    .id(resultSet.getInt("order_id"))
-//                                    .build())
-//                            .products(Products
-//                                    .builder()
-//                                    .id(resultSet.getInt("products_id"))
-//                                    .build())
-//                            .quantity(resultSet.getInt("quantity"))
-//                            .price(resultSet.getDouble("price"))
-//                            .build();
-//            orderDetailsList.add(orderDetails);
-//        }
-//        log.info("orderDetails repository");
-//        return orderDetailsList;
-//    }
-
-    public List<OrderDetails> findSumOrder(int orderId) throws Exception {
+    public OrderDetails findSumOrder(int customerId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT sum(quantity * price) as price FROM orderDetails_tbl2 where id =? group by order_id"
+                "SELECT sum(quantity * price) as price FROM orderDetails_tbl where customer_id =?"
         );
-        preparedStatement.setInt(1,orderId);
+        preparedStatement.setInt(1,customerId);
 //todo
+        preparedStatement.execute();
         ResultSet resultSet = preparedStatement.executeQuery();
-        List<OrderDetails> orderDetailsList = new ArrayList<>();
+
+        OrderDetails orderDetails = null;
         while (resultSet.next()) {
-            OrderDetails orderDetails =
+            orderDetails =
                     OrderDetails
                             .builder()
                             .price(resultSet.getDouble("price"))
                             .build();
-            orderDetailsList.add(orderDetails);
         }
-        return orderDetailsList;
+        return orderDetails;
     }
-
-
-
 
     @Override
     public void close() throws Exception {

@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 public class SearchProductFrameController implements Initializable {
 
     @FXML
-    private Button searchBtn, addBtn;
+    private Button searchBtn, addBtn, exitBtn;
 
     @FXML
     private TextField searchTxt, countTxt, custTxt;
@@ -148,7 +148,24 @@ public class SearchProductFrameController implements Initializable {
             }
         });
 
+        exitBtn.setOnAction ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("loginFrame.fxml"))
+                );
 
+                stage.setScene(scene);
+                stage.setTitle("Log in");
+                stage.show();
+                resetForm();
+                exitBtn.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
 
     }
     private void showDataOnTable(List<Products> productsList) {
