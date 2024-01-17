@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1370.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mft.view.OrdersReportFrameController">
+   <children>
+      <TextField fx:id="searchTxt" layoutX="272.0" layoutY="27.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="38.0" prefWidth="728.0" promptText="جستجو...">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Button fx:id="searchBtn" layoutX="1007.0" layoutY="27.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="101.0" style="-fx-background-color: #30a0c2; -fx-background-radius: 5px 5px;" text="جستجو" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Pane layoutX="272.0" layoutY="76.0" prefHeight="583.0" prefWidth="836.0" style="-fx-background-color: white; -fx-border-color: dimgrey; -fx-border-width: 1px 3px 3px 1px;">
+         <children>
+            <Label alignment="CENTER" layoutX="62.0" layoutY="36.0" text="اطلاعات سفارش جهت ارسال" textFill="#6a6f6c">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <TableView fx:id="orderTbl" layoutX="62.0" layoutY="81.0" prefHeight="451.0" prefWidth="713.0" style="-fx-background-color: #f5f5f5;">
+               <columns>
+                  <TableColumn prefWidth="75.0" />
+                  <TableColumn prefWidth="75.0" />
+               </columns>
+               <opaqueInsets>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </opaqueInsets>
+            </TableView>
+            <Button fx:id="productBtn" layoutX="54.0" layoutY="537.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: white;" text="رفتن به جدول کالا &gt;" textFill="#838383">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="638.0" layoutY="60.0" text="ترتیب: براساس زمان سفارش" textFill="#7caec9" />
+         </children>
+      </Pane>
+   </children>
+</Pane>

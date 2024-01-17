@@ -10,8 +10,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import mft.controller.OrderController;
+import mft.controller.OrderDetailsController;
 import mft.controller.PaymentController;
 import mft.model.entity.AppState;
+import mft.model.entity.OrderDetails;
 import mft.model.entity.Orders;
 import mft.model.entity.Payment;
 import mft.model.entity.enums.OrderStatus;
@@ -25,13 +27,13 @@ import java.util.ResourceBundle;
 public class OrderFrameController implements Initializable {
 
     @FXML
-    private Button backBtn, homeBtn, addBtn;
+    private Button backBtn, homeBtn, addBtn, removeBtn;
 
     @FXML
     private ComboBox<String> payCmb;
 
     @FXML
-    private Label payLbl;
+    private Label payLbl, removeLbl, msgLbl;
 
     @FXML
     private TableView<Orders> orderTbl;
@@ -73,6 +75,7 @@ public class OrderFrameController implements Initializable {
                 alert.show();
 
             } catch (Exception e) {
+                msgLbl.setVisible(true);
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Save Error " + e.getMessage());
                 alert.show();
             }
@@ -92,6 +95,25 @@ public class OrderFrameController implements Initializable {
                 alert.show();
             }
         });
+
+        orderTbl.setOnMouseClicked((event) -> {
+            Orders orders = orderTbl.getSelectionModel().getSelectedItem();
+            removeLbl.setText(String.valueOf(orders.getId()));
+        });
+
+        removeBtn.setOnAction((event) -> {
+            try {
+                Orders orders = OrderController.getController().remove(Integer.valueOf(removeLbl.getText()));
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Order Removed");
+                alert.show();
+                resetForm();
+
+            } catch (Exception e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Remove Error " + e.getMessage());
+                alert.show();
+            }
+        });
+
 
         backBtn.setOnAction ((event) -> {
             try {
@@ -131,9 +153,8 @@ public class OrderFrameController implements Initializable {
             }
         });
 
-
     }
-//todo order_report
+
     private void showDataOnTable(List<Orders> ordersList) {
 
         ObservableList<Orders> orders = FXCollections.observableList(ordersList);
@@ -164,6 +185,7 @@ public class OrderFrameController implements Initializable {
 
     public void resetForm(){
         try {
+            msgLbl.setVisible(false);
             showDataOnTable(OrderController.getController().findByCustomerId(AppState.customer.getId()));
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR, "Data Load Error" + e.getMessage());

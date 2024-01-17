@@ -58,6 +58,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         preparedStatement.setInt(6, orders.getId());
 
         preparedStatement.execute();
+        log.info("order repository");
         return orders;
     }
 
@@ -70,6 +71,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
 
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
+        log.info("order repository");
         return null;
     }
 
@@ -77,7 +79,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public List<Orders> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orders_REPORT"
+                "SELECT * FROM orders_REPORT ORDER BY ORDERDATE"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -86,12 +88,19 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
             Orders orders =
                     Orders
                             .builder()
-                            .id(resultSet.getInt("id"))
+                            .id(resultSet.getInt("order_id"))
                             .customer(Customer
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
                                     .name(resultSet.getString("customer_name"))
                                     .family(resultSet.getString("customer_family"))
+                                    .build())
+                            .orderDetails(OrderDetails
+                                    .builder()
+                                    .products(Products
+                                            .builder()
+                                            .id(resultSet.getInt("products_id"))
+                                            .build())
                                     .build())
                             .amount(resultSet.getDouble("amount"))
                             .discount(resultSet.getFloat("discount"))
@@ -99,6 +108,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                             .build();
             ordersList.add(orders);
         }
+        log.info("order repository");
         return ordersList;
     }
 
@@ -106,10 +116,12 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
     public List<Orders> findByAll(String searchText) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orders_REPORT WHERE customer_name LIKE ? or customer_ID LIKE ? "
+                "SELECT * FROM orders_REPORT WHERE customer_name LIKE ? or customer_ID LIKE ? or customer_family LIKE ? or products_id LIKE ?"
         );
         preparedStatement.setString(1, searchText + "%");
         preparedStatement.setString(2, searchText + "%");
+        preparedStatement.setString(3, searchText + "%");
+        preparedStatement.setString(4, searchText + "%");
 
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Orders> ordersList = new ArrayList<>();
@@ -117,12 +129,19 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
             Orders orders =
                     Orders
                             .builder()
-                            .id(resultSet.getInt("id"))
+                            .id(resultSet.getInt("order_id"))
                             .customer(Customer
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
                                     .name(resultSet.getString("customer_name"))
                                     .family(resultSet.getString("customer_family"))
+                                    .build())
+                            .orderDetails(OrderDetails
+                                    .builder()
+                                    .products(Products
+                                            .builder()
+                                            .id(resultSet.getInt("products_id"))
+                                            .build())
                                     .build())
                             .amount(resultSet.getDouble("amount"))
                             .discount(resultSet.getFloat("discount"))
@@ -130,6 +149,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                             .build();
             ordersList.add(orders);
         }
+        log.info("order repository");
         return ordersList;
     }
 
@@ -138,7 +158,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
         connection = JdbcProvider.getJdbcProvider().getConnection();
 
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orders_REPORT WHERE ID=?"
+                "SELECT * FROM orders_tbl WHERE ID=?"
         );
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
@@ -153,14 +173,14 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                             .customer(Customer
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
-                                    .name(resultSet.getString("customer_name"))
-                                    .family(resultSet.getString("customer_family"))
                                     .build())
                             .amount(resultSet.getDouble("amount"))
                             .discount(resultSet.getFloat("discount"))
+                            .orderType(OrderStatus.valueOf(resultSet.getString("order_Type")))
                             .orderDate(resultSet.getTimestamp("orderDate").toLocalDateTime())
                             .build();
         }
+        log.info("order repository");
         return orders;
     }
 
@@ -188,6 +208,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                             .build();
             ordersList.add(orders);
         }
+        log.info("order repository");
         return ordersList;
     }
 
@@ -210,6 +231,7 @@ public class OrdersRepository implements Da<Orders>, AutoCloseable {
                             .amount(resultSet.getDouble("amount"))
                             .build();
         }
+        log.info("order repository");
         return orders;
     }
 

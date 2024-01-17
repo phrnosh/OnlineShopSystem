@@ -75,7 +75,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
     public List<Products> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM PRODUCT_TBL"
+                "SELECT * FROM PRODUCT_TBL ORDER BY ID"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();

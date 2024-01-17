@@ -160,7 +160,7 @@ public class OrderDetailFrameController implements Initializable {
         TableColumn<Payment, Double> totalCostCol = new TableColumn<>("Total Cost");
         totalCostCol.setCellValueFactory(new PropertyValueFactory<>("totalCost"));
 
-        TableColumn<Payment, String> paymentDetailsCol = new TableColumn<>(" Payment Details");
+        TableColumn<Payment, String> paymentDetailsCol = new TableColumn<>("Payment Details");
         paymentDetailsCol.setCellValueFactory(new PropertyValueFactory<>("paymentDetails"));
 
         TableColumn<Payment, String> typeCol = new TableColumn<>("Payment Type");
@@ -178,7 +178,6 @@ public class OrderDetailFrameController implements Initializable {
 
     public void resetForm(){
         try {
-            //TODO edit findAll
             showDataOnOrderTable(OrderDetailsController.getController().findByCustomerId(AppState.customer.getId()));
             showDataOnPaymentTable(PaymentController.getController().findByCustomerId(AppState.customer.getId()));
         }catch (Exception e){

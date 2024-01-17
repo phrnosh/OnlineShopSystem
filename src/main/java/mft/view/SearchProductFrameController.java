@@ -27,7 +27,7 @@ public class SearchProductFrameController implements Initializable {
     private Button searchBtn, addBtn, exitBtn;
 
     @FXML
-    private TextField searchTxt, countTxt, custTxt;
+    private TextField searchTxt, countTxt;
 
     @FXML
     private Label idTxt, nameTxt, brandTxt, priceTxt, numLb;
@@ -130,7 +130,7 @@ public class SearchProductFrameController implements Initializable {
                 stage.setTitle("سبد کالا");
                 stage.show();
                 resetForm();
-                editTp.getParent().getScene().getWindow().hide();
+                orderDetailTp.getParent().getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
@@ -149,7 +149,7 @@ public class SearchProductFrameController implements Initializable {
                 stage.setTitle("سفارشات");
                 stage.show();
                 resetForm();
-                editTp.getParent().getScene().getWindow().hide();
+                orderTp.getParent().getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());

@@ -64,12 +64,15 @@ select O.ID    as order_id,
        C.ID   as customer_id,
        C.NAME   as customer_name,
        C.FAMILY as customer_family,
-       O.amount as amount,
-       O.discount as discount,
-       O.orderdate
+       D.PRODUCTS_ID as products_id,
+       O.AMOUNT as amount,
+       O.DISCOUNT as discount,
+       O.ORDERDATE
 from orders_tbl O,
-     customer_tbl C
-where O.customer_id = C.ID;
+     customer_tbl C,
+     orderDetails_tbl D
+where O.customer_id = C.ID and
+      D.customer_id = O.customer_id;
 
 
 create view payment_report as
@@ -77,8 +80,9 @@ select P.ID    as payment_id,
        C.ID   as customer_id,
        C.NAME   as customer_name,
        C.FAMILY as customer_family,
-       P.totalcost as total_cost,
-       P.paymentdate as payment_date
+       P.TOTALCOST as total_cost,
+       P.TYPE as payment_type,
+       P.PAYMENTDATE as payment_date
 from payment_tbl P,
      customer_tbl C
 where P.customer_id = C.ID;

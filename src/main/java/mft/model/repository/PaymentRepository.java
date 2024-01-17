@@ -82,7 +82,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public List<Payment> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM payment_tbl"
+                "SELECT * FROM PAYMENT_REPORT ORDER BY payment_date"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -91,47 +91,52 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
             Payment payment =
                     Payment
                             .builder()
-                            .id(resultSet.getInt("id"))
+                            .id(resultSet.getInt("payment_id"))
                             .customer(Customer
                                     .builder()
                                     .id(resultSet.getInt("customer_id"))
+                                    .name(resultSet.getString("customer_name"))
+                                    .family(resultSet.getString("customer_family"))
                                     .build())
-                            .totalCost(resultSet.getDouble("totalCost"))
-                            .PaymentDetails(resultSet.getString("paymentDetails"))
-                            .PaymentType(resultSet.getString("type"))
-                            .orderType(OrderStatus.valueOf(resultSet.getString("order_type")))
-                            .PaymentTimeStamp(resultSet.getTimestamp("paymentDate").toLocalDateTime())
-
+                            .totalCost(resultSet.getDouble("total_cost"))
+                            .PaymentType(resultSet.getString("payment_type"))
+                            .PaymentTimeStamp(resultSet.getTimestamp("payment_date").toLocalDateTime())
                             .build();
             paymentList.add(payment);
         }
         return paymentList;
     }
-//
-//    public List<Payment> findByAll(String searchText) throws Exception {
-//        connection = JdbcProvider.getJdbcProvider().getConnection();
-//        preparedStatement = connection.prepareStatement(
-//                "SELECT * FROM payment_tbl WHERE ID LIKE ? or PRODUCTS_ID LIKE ? "
-//        );
-//        preparedStatement.setString(1, searchText);
-//        preparedStatement.setString(2, searchText);
-//
-//        ResultSet resultSet = preparedStatement.executeQuery();
-//        List<Payment> paymentList = new ArrayList<>();
-//        while (resultSet.next()) {
-//            Payment payment =
-//                    Payment
-//                            .builder()
-//                            .id(resultSet.getInt("id"))
-//                            .totalCost(resultSet.getDouble("totalCost"))
-//                            .PaymentType(PaymentType.valueOf(resultSet.getString("PaymentType")))
-//                            .PaymentDetails(resultSet.getString("PaymentDetails"))
-//                            .PaymentTimeStamp(resultSet.getTimestamp("PaymentTimeStamp").toLocalDateTime())
-//                            .build();
-//            paymentList.add(payment);
-//        }
-//        return paymentList;
-//    }
+
+    public List<Payment> findByAll(String searchText) throws Exception {
+        connection = JdbcProvider.getJdbcProvider().getConnection();
+        preparedStatement = connection.prepareStatement(
+                "SELECT * FROM PAYMENT_REPORT WHERE payment_id LIKE ? or CUSTOMER_ID LIKE ? or payment_type LIKE ?"
+        );
+        preparedStatement.setString(1, searchText + "%");
+        preparedStatement.setString(2, searchText + "%");
+        preparedStatement.setString(3, searchText + "%");
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Payment> paymentList = new ArrayList<>();
+        while (resultSet.next()) {
+            Payment payment =
+                    Payment
+                            .builder()
+                            .id(resultSet.getInt("payment_id"))
+                            .customer(Customer
+                                    .builder()
+                                    .id(resultSet.getInt("customer_id"))
+                                    .name(resultSet.getString("customer_name"))
+                                    .family(resultSet.getString("customer_family"))
+                                    .build())
+                            .totalCost(resultSet.getDouble("total_cost"))
+                            .PaymentType(resultSet.getString("payment_type"))
+                            .PaymentTimeStamp(resultSet.getTimestamp("payment_date").toLocalDateTime())
+                            .build();
+            paymentList.add(payment);
+        }
+        return paymentList;
+    }
 
     @Override
     public Payment findById(int id) throws Exception {

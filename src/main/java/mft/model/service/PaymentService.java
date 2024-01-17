@@ -49,11 +49,11 @@ public class PaymentService {
         }
     }
 
-//    public List<PaymentService> findByAll(String searchText) throws Exception {
-//        try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
-//            return orderDetailsRepository.findByAll(searchText);
-//        }
-//    }
+    public List<Payment> findByAll(String searchText) throws Exception {
+        try (PaymentRepository paymentRepository = new PaymentRepository()) {
+            return paymentRepository.findByAll(searchText);
+        }
+    }
 
     public Payment findById(int id) throws Exception {
         try (PaymentRepository paymentRepository = new PaymentRepository()) {

@@ -74,6 +74,20 @@
             </Label>
             <Label fx:id="payLbl" layoutX="418.0" layoutY="437.0" prefHeight="25.0" prefWidth="93.0" visible="false" />
             <ComboBox fx:id="payCmb" layoutX="519.0" layoutY="437.0" prefHeight="25.0" prefWidth="140.0" promptText="انتخاب کنید --" />
+            <Button fx:id="removeBtn" layoutX="216.0" layoutY="431.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="107.0" style="-fx-background-color: #803b96; -fx-background-radius: 20px 20px;" text="حذف سفارش" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="removeLbl" layoutX="332.0" layoutY="437.0" prefHeight="25.0" prefWidth="44.0" visible="false" />
+            <Label fx:id="msgLbl" layoutX="586.0" layoutY="470.0" prefHeight="19.0" prefWidth="153.0" text="روش پرداخت را انتخاب کنید!!" textFill="#c60303" visible="false">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

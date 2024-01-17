@@ -22,10 +22,13 @@ import java.util.ResourceBundle;
 public class ProductFrameController implements Initializable {
 
     @FXML
-    private Button saveBtn, editBtn, removeBtn, customerBtn, exitBtn;
+    private Button saveBtn, editBtn, removeBtn, exitBtn;
 
     @FXML
     private TextField idTxt, nameTxt, brandTxt, sizeTxt, priceTxt, searchTxt ;
+
+    @FXML
+    private TitledPane customerTp, orderTp, paymentTp;
 
     @FXML
     private TextArea descTxt;
@@ -109,7 +112,7 @@ public class ProductFrameController implements Initializable {
             }
         });
 
-        customerBtn.setOnAction ((event) -> {
+        customerTp.setOnMouseClicked ((event) -> {
             try {
                 Stage stage = new Stage();
                 Scene scene = new Scene(
@@ -120,7 +123,45 @@ public class ProductFrameController implements Initializable {
                 stage.setTitle("اطلاعات مشتریان");
                 stage.show();
                 resetForm();
-                customerBtn.getParent().getScene().getWindow().hide();
+                customerTp.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+        orderTp.setOnMouseClicked ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("ordersReportFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("اطلاعات سفارشات");
+                stage.show();
+                resetForm();
+                orderTp.getParent().getScene().getWindow().hide();
+
+            } catch (Exception e) {
+                Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());
+                alert.show();
+            }
+        });
+
+        paymentTp.setOnMouseClicked ((event) -> {
+            try {
+                Stage stage = new Stage();
+                Scene scene = new Scene(
+                        FXMLLoader.load(getClass().getClassLoader().getResource("paymentReportFrame.fxml"))
+                );
+
+                stage.setScene(scene);
+                stage.setTitle("اطلاعات پرداختی ها");
+                stage.show();
+                resetForm();
+                paymentTp.getParent().getScene().getWindow().hide();
 
             } catch (Exception e) {
                 Alert alert=new Alert(Alert.AlertType.ERROR ,"Error : "+ e.getMessage());

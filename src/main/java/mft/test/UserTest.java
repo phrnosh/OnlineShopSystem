@@ -1,6 +1,8 @@
 package mft.test;
 
 import lombok.extern.log4j.Log4j;
+import mft.controller.OrderController;
+import mft.controller.PaymentController;
 
 @Log4j
 public class UserTest {
@@ -37,8 +39,9 @@ public class UserTest {
 //
 //        System.out.println(OrderController.getController().findByCustomerId(42));
 
-//          System.out.println(PaymentController.getController().findAll());
+        System.out.println(PaymentController.getController().findAll());
 
+//        System.out.println(OrderController.getController().findAll());
 
 //        System.out.println(CustomerController.getController().findByUsernameAndPassword("admin" , "admin"));
 

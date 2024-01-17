@@ -69,9 +69,9 @@ public class PaymentController {
         return PaymentService.getService().findAll();
     }
 
-//    public List<OrderDetails> findByAll(String searchText) throws Exception {
-//        return OrderDetailsService.getService().findByAll(searchText);
-//    }
+    public List<Payment> findByAll(String searchText) throws Exception {
+        return PaymentService.getService().findByAll(searchText);
+    }
 
     public Payment findById(Integer id) throws Exception {
         return PaymentService.getService().findById(id);

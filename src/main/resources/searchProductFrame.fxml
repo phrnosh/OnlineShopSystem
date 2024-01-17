@@ -95,8 +95,6 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </TitledPane>
-            <TextField fx:id="custTxt" layoutX="782.0" layoutY="516.0" prefHeight="30.0" prefWidth="40.0" />
-            <Label layoutX="777.0" layoutY="499.0" text="کد مشتری" />
          </children>
       </Pane>
       <Pane layoutX="114.0" layoutY="76.0" prefHeight="583.0" prefWidth="147.0" style="-fx-background-color: white;">
