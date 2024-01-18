@@ -38,14 +38,14 @@ public class CustomerController {
                             .status(status)
                             .build();
             CustomerService.getService().save(customer);
-            log.info("Save");
+            log.info("Save Customer");
             return customer;
         }else {
             throw new Exception("Invalid Data");
         }
     }
 
-    public Customer edit(String name, String family, String username, String password , String address, String phoneNumber, String email, Boolean status) throws Exception {
+    public Customer edit(Integer id, String name, String family, String username, String password , String address, String phoneNumber, String email, Boolean status) throws Exception {
         if (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,name) &&
                 (Pattern.matches("^[a-zA-Z\\s]{3,30}$" ,family)) &&
                 (Pattern.matches("^[a-z\\d\\S\\._]{3,30}$" ,username)) &&
@@ -55,6 +55,7 @@ public class CustomerController {
             Customer customer =
                     Customer
                             .builder()
+                            .id(id)
                             .name(name)
                             .family(family)
                             .username(username)
@@ -65,7 +66,7 @@ public class CustomerController {
                             .status(status)
                             .build();
             CustomerService.getService().edit(customer);
-            log.info("Edit");
+            log.info("Edit Customer");
             return customer;
         }else {
             throw new Exception("Invalid Data");
@@ -75,27 +76,27 @@ public class CustomerController {
     public Customer remove(Integer id) throws Exception {
         Customer customer=CustomerService.getService().findById(id);
         CustomerService.getService().remove(id);
-        log.info("Remove");
+        log.info("Remove Customer");
         return customer;
     }
 
     public List<Customer> findAll() throws Exception {
-        log.info("FindAll");
+        log.info("FindAll Customer");
         return CustomerService.getService().findAll();
     }
 
     public List<Customer> findByAll(String searchText) throws Exception {
-        log.info("FindByAll");
+        log.info("FindByAll Customer");
         return CustomerService.getService().findByAll(searchText);
     }
 
     public Customer findById(Integer id) throws Exception {
-        log.info("FindById");
+        log.info("FindById Customer");
         return CustomerService.getService().findById(id);
     }
 
     public Customer findByUsername(String username) throws Exception {
-        log.info("FindByUsername");
+        log.info("FindByUsername Customer");
         return CustomerService.getService().findByUsername(username);
 
     }
@@ -103,7 +104,7 @@ public class CustomerController {
     public Customer findByUsernameAndPassword(String username, String password) throws Exception {
         Customer customer = CustomerService.getService().findByUsernameAndPassword(username, password);
         if (customer != null) {
-            log.info("FindByUsernameAndPassword");
+            log.info("FindByUsernameAndPassword Customer");
             return customer;
         }
         throw new Exception("Invalid Username/Password");

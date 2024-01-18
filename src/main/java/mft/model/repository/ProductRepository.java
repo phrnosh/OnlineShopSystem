@@ -21,7 +21,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
     public Products save(Products products) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "select product_seq.nextval as NEXT_ID from dual"
+                "SELECT PRODUCT_SEQ.NEXTVAL AS NEXT_ID FROM DUAL"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -29,7 +29,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         products.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into PRODUCT_TBL(id, name, brand, productSize, price, description) values (?, ?, ?, ?, ?, ?)"
+                "INSERT INTO PRODUCT_TBL (ID, NAME, BRAND, PRODUCTSIZE, PRICE, DESCRIPTION) VALUES (?, ?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, products.getId());
         preparedStatement.setString(2, products.getName());
@@ -47,7 +47,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
     public Products edit(Products products) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update PRODUCT_TBL SET name=?, brand=?, productSize=?, price=?, description=? where id=? "
+                "UPDATE PRODUCT_TBL SET NAME=?, BRAND=?, PRODUCTSIZE=?, PRICE=?, DESCRIPTION=? WHERE ID=? "
         );
         preparedStatement.setString(1, products.getName());
         preparedStatement.setString(2, products.getBrand());
@@ -57,6 +57,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
         preparedStatement.setInt(6, products.getId());
 
         preparedStatement.execute();
+        log.info("Product Repository");
         return products;
     }
 
@@ -64,10 +65,11 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
     public Products remove(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "Delete FROM PRODUCT_TBL WHERE ID=?"
+                "DELETE FROM PRODUCT_TBL WHERE ID=?"
         );
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
+        log.info("Product Repository");
         return null;
     }
 
@@ -93,13 +95,14 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .build();
             productsList.add(products);
         }
+        log.info("Product Repository");
         return productsList;
     }
 
     public List<Products> findByAll(String searchText) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM PRODUCT_TBL WHERE NAME LIKE ? or BRAND LIKE ? OR PRICE LIKE ? OR DESCRIPTION LIKE ? "
+                "SELECT * FROM PRODUCT_TBL WHERE NAME LIKE ? OR BRAND LIKE ? OR PRICE LIKE ? OR DESCRIPTION LIKE ? "
         );
         preparedStatement.setString(1, searchText + "%");
         preparedStatement.setString(2, searchText + "%");
@@ -121,6 +124,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .build();
             productsList.add(products);
         }
+        log.info("Product Repository");
         return productsList;
     }
 
@@ -148,32 +152,7 @@ public class ProductRepository implements Da<Products>,AutoCloseable {
                             .description(resultSet.getString("description"))
                             .build();
         }
-        return products;
-    }
-
-    public Products findByName(String name) throws Exception {
-        connection = JdbcProvider.getJdbcProvider().getConnection();
-        preparedStatement = connection.prepareStatement(
-                "SELECT * FROM PERSON_TBL WHERE NAME LIKE ?"
-        );
-        preparedStatement.setString(1, name + "%");
-        preparedStatement.execute();
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        Products products = null;
-
-        while (resultSet.next()) {
-            products =
-                    Products
-                            .builder()
-                            .id(resultSet.getInt("id"))
-                            .name(resultSet.getString("name"))
-                            .brand(resultSet.getString("brand"))
-                            .size(resultSet.getString("productSize"))
-                            .price(resultSet.getDouble("price"))
-                            .description(resultSet.getString("description"))
-                            .build();
-        }
+        log.info("Product Repository");
         return products;
     }
 

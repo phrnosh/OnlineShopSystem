@@ -24,7 +24,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public Payment save(Payment payment) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "select payment_seq.nextval as NEXT_ID from dual"
+                "SELECT PAYMENT_SEQ.NEXTVAL AS NEXT_ID FROM DUAL"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -32,7 +32,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         payment.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into payment_tbl(id, customer_id, totalcost, paymentdetails, type, order_type, paymentdate) values (?, ?, ?, ?, ?, ?, ?)"
+                "INSERT INTO PAYMENT_TBL (ID, CUSTOMER_ID, TOTALCOST, PAYMENTDETAILS, TYPE, ORDER_TYPE, PAYMENTDATE) VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, payment.getId());
         preparedStatement.setInt(2, payment.getCustomer().getId());
@@ -43,7 +43,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         preparedStatement.setTimestamp(7, Timestamp.valueOf(payment.getPaymentTimeStamp()));
 
         preparedStatement.execute();
-        log.info("payment repository");
+        log.info("Payment Repository");
         return payment;
     }
 
@@ -51,7 +51,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public Payment edit(Payment payment) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update payment_tbl SET customer_id=?, totalcost=?, paymentdetails=?, type=?, order_type=?, paymentdate=? where id=? "
+                "UPDATE PAYMENT_TBL SET CUSTOMER_ID=?, TOTALCOST=?, PAYMENTDETAILS=?, TYPE=?, ORDER_TYPE=?, PAYMENTDATE=? WHERE ID=? "
         );
 
         preparedStatement.setDouble(1, payment.getTotalCost());
@@ -63,6 +63,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         preparedStatement.setInt(7, payment.getId());
 
         preparedStatement.execute();
+        log.info("Payment Repository");
         return payment;
     }
 
@@ -70,11 +71,12 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public Payment remove(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "Delete FROM payment_tbl WHERE ID=?"
+                "DELETE FROM PAYMENT_TBL WHERE ID=?"
         );
 
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
+        log.info("Payment Repository");
         return null;
     }
 
@@ -82,7 +84,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
     public List<Payment> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM PAYMENT_REPORT ORDER BY payment_date"
+                "SELECT * FROM PAYMENT_REPORT ORDER BY PAYMENT_DATE"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -104,13 +106,14 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .build();
             paymentList.add(payment);
         }
+        log.info("Payment Repository");
         return paymentList;
     }
 
     public List<Payment> findByAll(String searchText) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM PAYMENT_REPORT WHERE payment_id LIKE ? or CUSTOMER_ID LIKE ? or payment_type LIKE ?"
+                "SELECT * FROM PAYMENT_REPORT WHERE PAYMENT_ID LIKE ? OR CUSTOMER_ID LIKE ? OR PAYMENT_TYPE LIKE ?"
         );
         preparedStatement.setString(1, searchText + "%");
         preparedStatement.setString(2, searchText + "%");
@@ -135,6 +138,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .build();
             paymentList.add(payment);
         }
+        log.info("Payment Repository");
         return paymentList;
     }
 
@@ -143,7 +147,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
         connection = JdbcProvider.getJdbcProvider().getConnection();
 
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM payment_tbl WHERE ID=?"
+                "SELECT * FROM PAYMENT_TBL WHERE ID=?"
         );
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
@@ -166,13 +170,14 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .PaymentTimeStamp(resultSet.getTimestamp("PaymentDate").toLocalDateTime())
                             .build();
         }
+        log.info("Payment Repository");
         return payment;
     }
 
     public List<Payment> findByCustomerId(int customerId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM payment_tbl where customer_id=?"
+                "SELECT * FROM PAYMENT_TBL WHERE CUSTOMER_ID=?"
         );
         preparedStatement.setInt(1, customerId);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -194,6 +199,7 @@ public class PaymentRepository implements Da<Payment>, AutoCloseable{
                             .build();
             paymentList.add(payment);
         }
+        log.info("Payment Repository");
         return paymentList;
     }
 

@@ -35,10 +35,10 @@ public class OrderController {
                         .orderDate(ordertime)
                         .build();
         OrderService.getService().save(orders);
-        log.info("Save");
+        log.info("Save Order");
         return orders;
     }
-//todo
+
     public Orders edit(Integer id, Integer customer, Double amount, float discount, OrderStatus type, LocalDateTime ordertime) throws Exception {
         Orders orders =
                 Orders
@@ -55,39 +55,39 @@ public class OrderController {
                         .build();
 
         OrderService.getService().edit(orders);
-        log.info("Edit");
+        log.info("Edit Order");
             return orders;
 }
 
     public Orders remove(Integer id) throws Exception {
         Orders orders=OrderService.getService().findById(id);
         OrderService.getService().remove(id);
-        log.info("Remove");
+        log.info("Remove Order");
         return orders;
     }
 
     public List<Orders> findAll() throws Exception {
-        log.info("findAll");
+        log.info("FindAll Order");
         return OrderService.getService().findAll();
     }
 
     public List<Orders> findByAll(String searchText) throws Exception {
-        log.info("findByAll");
+        log.info("FindByAll Order");
         return OrderService.getService().findByAll(searchText);
     }
 
     public Orders findById(Integer id) throws Exception {
-        log.info("findById");
+        log.info("FindById Order");
         return OrderService.getService().findById(id);
     }
 
     public List<Orders> findByCustomerId(int customerId) throws Exception {
-        log.info("findByCustomerId");
+        log.info("FindByCustomerId Order");
         return OrderService.getService().findByCustomerId(customerId);
     }
 
     public Orders findAmountOrder(Integer customerId) throws Exception {
-        log.info("findAmountOrder");
+        log.info("FindAmountOrder Order");
         return OrderService.getService().findAmountOrder(customerId);
     }
 

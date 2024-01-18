@@ -37,7 +37,7 @@ public class OrderDetailsController {
                             .price(price)
                             .build();
             OrderDetailsService.getService().save(orderDetails);
-        log.info("Save");
+        log.info("Save OrderDetails");
             return orderDetails;
     }
 
@@ -58,39 +58,34 @@ public class OrderDetailsController {
                         .price(price)
                         .build();
         OrderDetailsService.getService().edit(orderDetails);
-        log.info("Edit");
+        log.info("Edit OrderDetails");
             return orderDetails;
     }
 
     public OrderDetails remove(Integer id) throws Exception {
         OrderDetails orderDetails=OrderDetailsService.getService().findById(id);
         OrderDetailsService.getService().remove(id);
-        log.info("Remove");
+        log.info("Remove OrderDetails");
         return orderDetails;
     }
 
     public List<OrderDetails> findAll() throws Exception {
-        log.info("findAll");
+        log.info("FindAll OrderDetails");
         return OrderDetailsService.getService().findAll();
     }
 
-    public List<OrderDetails> findByAll(String searchText) throws Exception {
-        log.info("findByAll");
-        return OrderDetailsService.getService().findByAll(searchText);
-    }
-
     public OrderDetails findById(Integer id) throws Exception {
-        log.info("findById");
+        log.info("FindById OrderDetails");
         return OrderDetailsService.getService().findById(id);
     }
 
     public List<OrderDetails> findByCustomerId(int customerId) throws Exception {
-        log.info("findByCustomerId");
+        log.info("FindByCustomerId OrderDetails");
         return OrderDetailsService.getService().findByCustomerId(customerId);
     }
 
     public OrderDetails findSumOrder(int customerId) throws Exception {
-        log.info("findSumOrder");
+        log.info("FindSumOrder OrderDetails");
         return OrderDetailsService.getService().findSumOrder(customerId);
     }
 

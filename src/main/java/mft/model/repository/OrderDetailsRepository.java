@@ -25,7 +25,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public OrderDetails save(OrderDetails orderDetails) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "select orderDetails_seq.nextval as NEXT_ID from dual"
+                "SELECT ORDERDETAILS_SEQ.NEXTVAL AS NEXT_ID FROM DUAL"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -33,7 +33,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         orderDetails.setId(resultSet.getInt("NEXT_ID"));
 
         preparedStatement = connection.prepareStatement(
-                "insert into orderDetails_tbl(id, customer_id, products_id, quantity, price) values (?, ?, ?, ?, ?)"
+                "INSERT INTO ORDERDETAILS_TBL (ID, CUSTOMER_ID, PRODUCTS_ID, QUANTITY, PRICE) VALUES (?, ?, ?, ?, ?)"
         );
         preparedStatement.setInt(1, orderDetails.getId());
         preparedStatement.setInt(2, orderDetails.getCustomer().getId());
@@ -43,7 +43,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         preparedStatement.setDouble(5, orderDetails.getPrice());
 
         preparedStatement.execute();
-        log.info("orderDetails repository");
+        log.info("OrderDetails Repository");
         return orderDetails;
     }
 
@@ -51,7 +51,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public OrderDetails edit(OrderDetails orderDetails) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "update orderDetails_tbl SET customer_id=?, products_id=?, quantity=?, price=? where id=? "
+                "UPDATE ORDERDETAILS_TBL SET CUSTOMER_ID=?, PRODUCTS_ID=?, QUANTITY=?, PRICE=? WHERE ID=? "
         );
         preparedStatement.setInt(1, orderDetails.getCustomer().getId());
 //        preparedStatement.setInt(2, orderDetails.getOrder().getId());
@@ -62,7 +62,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
 
 
         preparedStatement.execute();
-        log.info("orderDetails repository");
+        log.info("OrderDetails Repository");
         return orderDetails;
     }
 
@@ -70,12 +70,12 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public OrderDetails remove(int id) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "Delete FROM orderDetails_tbl WHERE ID=?"
+                "DELETE FROM ORDERDETAILS_TBL WHERE ID=?"
         );
 
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
-        log.info("orderDetails repository");
+        log.info("OrderDetails Repository");
         return null;
     }
 
@@ -83,7 +83,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
     public List<OrderDetails> findAll() throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orderDetails_tbl"
+                "SELECT * FROM ORDERDETAILS_TBL"
         );
 
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -106,39 +106,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .build();
             orderDetailsList.add(orderDetails);
         }
-        log.info("orderDetails repository");
-        return orderDetailsList;
-    }
-
-    public List<OrderDetails> findByAll(String searchText) throws Exception {
-        connection = JdbcProvider.getJdbcProvider().getConnection();
-        preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orderDetails_tbl WHERE ID LIKE ? or PRODUCTS_ID LIKE ? "
-        );
-        preparedStatement.setString(1, searchText + "%");
-        preparedStatement.setString(2, searchText + "%");
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-        List<OrderDetails> orderDetailsList = new ArrayList<>();
-        while (resultSet.next()) {
-            OrderDetails orderDetails =
-                    OrderDetails
-                            .builder()
-                            .id(resultSet.getInt("id"))
-                            .customer(Customer
-                                    .builder()
-                                    .id(resultSet.getInt("customer_id"))
-                                    .build())
-                            .products(Products
-                                    .builder()
-                                    .id(resultSet.getInt("products_id"))
-                                    .build())
-                            .quantity(resultSet.getInt("quantity"))
-                            .price(resultSet.getDouble("price"))
-                            .build();
-            orderDetailsList.add(orderDetails);
-        }
-        log.info("orderDetails repository");
+        log.info("OrderDetails Repository");
         return orderDetailsList;
     }
 
@@ -147,7 +115,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
         connection = JdbcProvider.getJdbcProvider().getConnection();
 
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orderDetails_tbl WHERE ID=?"
+                "SELECT * FROM ORDERDETAILS_TBL WHERE ID=?"
         );
         preparedStatement.setInt(1, id);
         preparedStatement.execute();
@@ -171,14 +139,14 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .price(resultSet.getDouble("price"))
                             .build();
         }
-        log.info("orderDetails repository");
+        log.info("OrderDetails Repository");
         return orderDetails;
     }
 
     public List<OrderDetails> findByCustomerId(int customerId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT * FROM orderDetails_tbl where customer_id=?"
+                "SELECT * FROM ORDERDETAILS_TBL WHERE CUSTOMER_ID=?"
         );
         preparedStatement.setInt(1, customerId);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -201,16 +169,16 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .build();
             orderDetailsList.add(orderDetails);
         }
+        log.info("OrderDetails Repository");
         return orderDetailsList;
     }
 
     public OrderDetails findSumOrder(int customerId) throws Exception {
         connection = JdbcProvider.getJdbcProvider().getConnection();
         preparedStatement = connection.prepareStatement(
-                "SELECT sum(quantity * price) as price FROM orderDetails_tbl where customer_id =?"
+                "SELECT SUM(QUANTITY * PRICE) AS PRICE FROM ORDERDETAILS_TBL WHERE CUSTOMER_ID =?"
         );
         preparedStatement.setInt(1, customerId);
-//todo
         preparedStatement.execute();
         ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -222,6 +190,7 @@ public class OrderDetailsRepository implements Da<OrderDetails>, AutoCloseable{
                             .price(resultSet.getDouble("price"))
                             .build();
         }
+        log.info("OrderDetails Repository");
         return orderDetails;
     }
 

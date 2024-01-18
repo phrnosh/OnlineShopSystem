@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import mft.controller.CustomerController;
+import mft.controller.OrderController;
+import mft.model.entity.AppState;
 import mft.model.entity.Customer;
 
 import java.net.URL;
@@ -31,16 +33,22 @@ public class EditCustomerFrameController implements Initializable {
     @FXML
     private Label msgLbl, star1, star2;
 
-    @FXML
-    private RadioButton enableRdo, disableRdo;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        System.out.println(AppState.customer.getName());
+        try {
+            System.out.println(OrderController.getController().findByCustomerId(AppState.customer.getId()));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         resetForm();
         editBtn.setOnAction((event) -> {
             try {
                 RadioButton radioButton = (RadioButton) activeToggleGroup.getSelectedToggle();
                 Customer customer = CustomerController.getController().edit(
+                        AppState.customer.getId(),
                         nameTxt.getText(),
                         familyTxt.getText(),
                         usernameTxt.getText(),

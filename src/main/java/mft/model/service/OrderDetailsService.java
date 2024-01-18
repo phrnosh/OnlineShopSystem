@@ -48,12 +48,6 @@ public class OrderDetailsService {
         }
     }
 
-    public List<OrderDetails> findByAll(String searchText) throws Exception {
-        try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
-            return orderDetailsRepository.findByAll(searchText);
-        }
-    }
-
     public OrderDetails findById(int id) throws Exception {
         try (OrderDetailsRepository orderDetailsRepository = new OrderDetailsRepository()) {
             return orderDetailsRepository.findById(id);

@@ -4,32 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="Orders-Upload">
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrdersReportFrameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/PaymentReportFrameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/ordersReportFrame.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/mft/view/paymentReportFrame.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ordersReportFrame.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/paymentReportFrame.fxml" afterDir="false" />
+    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="Reports-Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image/login.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/entity/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/entity/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/OrderFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrderFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/ProductFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/EditCustomerFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/EditCustomerFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/RegisterServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/orderFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/orderFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/searchProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/searchProductFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProductFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/orderFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/orderFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/searchProductFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/searchProductFrame.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +78,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -243,7 +238,8 @@
       <workItem from="1705238372560" duration="10699000" />
       <workItem from="1705330865981" duration="13557000" />
       <workItem from="1705388764581" duration="30472000" />
-      <workItem from="1705499036416" duration="12838000" />
+      <workItem from="1705499036416" duration="12984000" />
+      <workItem from="1705562395992" duration="20292000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -373,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705432513266</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Reports-Upload">
+      <option name="closed" value="true" />
+      <created>1705522522319</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1705522522319</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -422,7 +426,8 @@
     <MESSAGE value="changes" />
     <MESSAGE value="sql-Upload" />
     <MESSAGE value="Orders-Upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Orders-Upload" />
+    <MESSAGE value="Reports-Upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reports-Upload" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

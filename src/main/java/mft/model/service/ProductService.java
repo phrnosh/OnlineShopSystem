@@ -59,10 +59,4 @@ public class ProductService {
             return productRepository.findById(id);
         }
     }
-
-    public Products findByName(String name) throws Exception {
-        try (ProductRepository productRepository = new ProductRepository()) {
-            return productRepository.findByName(name);
-        }
-    }
 }

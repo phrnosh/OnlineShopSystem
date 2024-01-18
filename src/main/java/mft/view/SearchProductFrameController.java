@@ -51,7 +51,6 @@ public class SearchProductFrameController implements Initializable {
         resetForm();
         addBtn.setOnAction((event) -> {
             try {
-                //todo problem in user Id
                 OrderDetails orderDetails = OrderDetailsController.getController().save(
                         AppState.customer.getId(),
                         Integer.valueOf(idTxt.getText()),

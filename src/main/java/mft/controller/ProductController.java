@@ -30,7 +30,7 @@ public class ProductController {
                             .description(description)
                             .build();
             ProductService.getService().save(products);
-            log.info("Save");
+            log.info("Save Product");
             return products;
     }
 
@@ -46,29 +46,30 @@ public class ProductController {
                             .description(description)
                             .build();
             ProductService.getService().edit(products);
+            log.info("Edit Product");
             return products;
     }
 
     public Products remove(Integer id) throws Exception {
         Products products=ProductService.getService().findById(id);
         ProductService.getService().remove(id);
+        log.info("Remove Product");
         return products;
     }
 
     public List<Products> findAll() throws Exception {
+        log.info("FindAll Product");
         return ProductService.getService().findAll();
     }
 
     public List<Products> findByAll(String searchText) throws Exception {
+        log.info("FindByAll Product");
         return ProductService.getService().findByAll(searchText);
     }
 
     public Products findById(Integer id) throws Exception {
+        log.info("FindById Product");
         return ProductService.getService().findById(id);
-    }
-
-    public Products findByName(String name) throws Exception {
-        return ProductService.getService().findByName(name);
     }
 }
 

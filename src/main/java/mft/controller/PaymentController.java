@@ -36,7 +36,7 @@ public class PaymentController {
                         .PaymentTimeStamp(paymentDate)
                         .build();
         PaymentService.getService().save(payment);
-        log.info("Save");
+        log.info("Save Payment");
         return payment;
     }
 
@@ -56,29 +56,34 @@ public class PaymentController {
                         .PaymentTimeStamp(paymentDate)
                         .build();
         PaymentService.getService().edit(payment);
+        log.info("Edit Payment");
         return payment;
     }
 
     public Payment remove(Integer id) throws Exception {
         Payment payment=PaymentService.getService().findById(id);
         PaymentService.getService().remove(id);
+        log.info("Remove Payment");
         return payment;
     }
 
     public List<Payment> findAll() throws Exception {
+        log.info("FindAll Payment");
         return PaymentService.getService().findAll();
     }
 
     public List<Payment> findByAll(String searchText) throws Exception {
+        log.info("FindByAll Payment");
         return PaymentService.getService().findByAll(searchText);
     }
 
     public Payment findById(Integer id) throws Exception {
+        log.info("FindById Payment");
         return PaymentService.getService().findById(id);
     }
 
     public List<Payment> findByCustomerId(int customerId) throws Exception {
-        log.info("findByCustomerId");
+        log.info("FindByCustomerId Payment");
         return PaymentService.getService().findByCustomerId(customerId);
     }
 }

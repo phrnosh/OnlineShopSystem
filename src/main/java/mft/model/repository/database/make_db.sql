@@ -12,16 +12,16 @@ create table customer_tbl
     status  number(1)
 --     role nvarchar2(10)
 );
-create sequence customer_seq start with 2 increment by 1;
+create sequence customer_seq start with 1 increment by 1;
 
 create table product_tbl
 (
     id number primary key ,
-    name   nvarchar2(30),
+    name   nvarchar2(50),
     brand nvarchar2(30),
     productSize nvarchar2(10),
     price number(10),
-    description nvarchar2(50)
+    description nvarchar2(100)
 );
 create sequence product_seq start with 1 increment by 1;
 
