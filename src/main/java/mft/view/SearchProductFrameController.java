@@ -56,7 +56,7 @@ public class SearchProductFrameController implements Initializable {
                         Integer.valueOf(idTxt.getText()),
                         Integer.valueOf(countTxt.getText()),
                         Double.valueOf(priceTxt.getText()));
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Item Saved");
                 alert.show();
                 resetForm();
 

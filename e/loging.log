@@ -1,0 +1,7 @@
+2024-01-05 16:01:55,340 [main] INFO  mft.test.UserTest - Main TEST 
+2024-01-05 16:01:56,996 [main] INFO  mft.model.entity.Products - Products Created TEST 
+2024-01-05 16:01:57,557 [main] INFO  mft.model.repository.OrderDetailsRepository - orderDetails repository TEST 
+2024-01-05 16:01:57,560 [main] INFO  mft.controller.OrderDetailsController - Save TEST 
+2024-01-05 16:03:53,305 [main] INFO  mft.test.UserTest - Main TEST 
+2024-01-05 16:03:55,413 [main] INFO  mft.model.repository.ProductRepository - Product Repository TEST 
+2024-01-05 16:03:55,416 [main] INFO  mft.controller.ProductController - Save TEST 

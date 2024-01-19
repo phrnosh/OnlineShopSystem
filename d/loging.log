@@ -1,0 +1,3 @@
+2024-01-05 16:03:04,885 [main] INFO  mft.test.UserTest - Main TEST 
+2024-01-05 16:03:06,964 [main] INFO  mft.model.repository.ProductRepository - Product Repository TEST 
+2024-01-05 16:03:06,977 [main] INFO  mft.controller.ProductController - Save TEST 

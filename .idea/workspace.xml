@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="Reports-Upload">
+    <list default="true" id="4751003b-474f-4e65-8cc4-9a36821f667b" name="Changes" comment="New-Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/login.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/OrderDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/CustomerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrderDetailsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/PaymentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/repository/database/make_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/OrderDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/test/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/EditCustomerFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/EditCustomerFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/RegisterServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/model/tools/JdbcProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/model/tools/JdbcProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/OrderDetailFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mft/view/SearchProductFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/log4j.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +70,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -239,7 +227,8 @@
       <workItem from="1705330865981" duration="13557000" />
       <workItem from="1705388764581" duration="30472000" />
       <workItem from="1705499036416" duration="12984000" />
-      <workItem from="1705562395992" duration="20292000" />
+      <workItem from="1705562395992" duration="22166000" />
+      <workItem from="1705646200875" duration="13772000" />
     </task>
     <task id="LOCAL-00001" summary="entity">
       <option name="closed" value="true" />
@@ -377,7 +366,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705522522319</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="New-Changes">
+      <option name="closed" value="true" />
+      <created>1705587890778</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1705587890779</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +424,8 @@
     <MESSAGE value="sql-Upload" />
     <MESSAGE value="Orders-Upload" />
     <MESSAGE value="Reports-Upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reports-Upload" />
+    <MESSAGE value="New-Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="New-Changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

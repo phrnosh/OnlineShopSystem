@@ -72,7 +72,7 @@ public class CustomerService {
 
     public Customer findByUsernameAndPassword(String username, String password) throws Exception {
         try (CustomerRepository customerRepository = new CustomerRepository()) {
-            return customerRepository.findByUsername(username);
+            return customerRepository.findByUsernameAndPassword(username,password);
         }
     }
 }

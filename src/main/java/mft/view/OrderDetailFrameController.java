@@ -69,7 +69,7 @@ public class OrderDetailFrameController implements Initializable {
                 resetForm();
                 homeBtn.getParent().getScene().getWindow().hide();
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Saved");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Item Saved");
                 alert.show();
 
             } catch (Exception e) {
@@ -82,7 +82,7 @@ public class OrderDetailFrameController implements Initializable {
         removeBtn.setOnAction((event) -> {
             try {
                 OrderDetails orderDetails = OrderDetailsController.getController().remove(Integer.valueOf(idLbl.getText()));
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff Removed");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Item Removed");
                 alert.show();
                 resetForm();
 
@@ -126,11 +126,8 @@ public class OrderDetailFrameController implements Initializable {
         TableColumn<OrderDetails, Integer> idCol = new TableColumn<>("#");
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<OrderDetails, Integer> customerIdCol = new TableColumn<>("Customer Id");
+        TableColumn<OrderDetails, Integer> customerIdCol = new TableColumn<>("ddCustomer Id");
         customerIdCol.setCellValueFactory(new PropertyValueFactory<>("customer"));
-
-//        TableColumn<OrderDetails, Integer> orderIdCol = new TableColumn<>("Order Id");
-//        orderIdCol.setCellValueFactory(new PropertyValueFactory<>("order"));
 
         TableColumn<OrderDetails, Integer> productNameCol = new TableColumn<>("Product Id");
         productNameCol.setCellValueFactory(new PropertyValueFactory<>("products"));
